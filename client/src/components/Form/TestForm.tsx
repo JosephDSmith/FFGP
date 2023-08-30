@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Formik, Field, Form} from "formik";
-import {UserType} from '../types';
+import {UserType} from '../../types';
 import * as Yup from "yup";
 
 //Instanciate props interface for TestForm => updated to use defined UserType
