@@ -5,6 +5,7 @@ import Authorization from './pages/Auth/Authorization';
 import Home from './pages/Home/Home';
 import Languages from './pages/Languages/Languages';
 import Settings from './pages/Settings/Settings';
+import './App.css'
 
 export default function App() {
 
