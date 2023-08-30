@@ -10,7 +10,7 @@ const Navigation: React.FC<NavigationProps> = (props) => {
   return (
     <div className="navigation">
       {/* Navigation content goes here */}
-      <h1>TEST - THIS IS NAVIGATION </h1>
+      <h1>THIS IS NAVIGATION </h1>
         <Link to="/">auth</Link><br/>
         <Link to="/home">home</Link><br/>
         <Link to="/languages">languages</Link><br/>

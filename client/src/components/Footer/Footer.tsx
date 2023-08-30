@@ -9,7 +9,7 @@ const Footer: React.FC<FooterProps> = (props) => {
   return (
     <footer className="footer">
       {/* Footer content goes here */}
-      <h1>TEST - THIS IS FOOTER </h1>
+      <h1>THIS IS FOOTER </h1>
     </footer>
   );
 };

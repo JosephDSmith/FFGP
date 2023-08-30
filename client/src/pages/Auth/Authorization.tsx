@@ -9,7 +9,7 @@ const Authorization: React.FC<AuthorizationProps> = (props) => {
   return (
     <div className="authorization">
       {/* Authorization content goes here */}
-      <h1>TEST - THIS IS AUTH </h1>
+      <h1>THIS IS AUTH </h1>
     </div>
   );
 };

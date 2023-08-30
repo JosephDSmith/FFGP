@@ -9,7 +9,7 @@ const Languages: React.FC<LanguagesProps> = (props) => {
   return (
     <div className="languages">
       {/* Languages content goes here */}
-      <h1>TEST - THIS IS LANGUAGES </h1>
+      <h1>THIS IS LANGUAGES </h1>
     </div>
   );
 };

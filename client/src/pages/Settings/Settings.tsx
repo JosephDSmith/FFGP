@@ -9,7 +9,7 @@ const Settings: React.FC<SettingsProps> = (props) => {
   return (
     <div className="settings">
       {/* Settings content goes here */}
-      <h1>TEST - THIS IS SETTINGS </h1>
+      <h1>THIS IS SETTINGS </h1>
     </div>
   );
 };

@@ -9,7 +9,7 @@ const Home: React.FC<HomeProps> = (props) => {
   return (
     <div className="home">
       {/* Home content goes here */}
-      <h1>TEST - THIS IS HOME </h1>
+      <h1>THIS IS HOME </h1>
     </div>
   );
 };
