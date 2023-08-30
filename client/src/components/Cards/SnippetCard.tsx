@@ -1,7 +1,7 @@
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
-import { SnippetType } from '../types'
+import { SnippetType } from '../../types'
 
 interface SnippetCardProps {
   snippet: SnippetType
