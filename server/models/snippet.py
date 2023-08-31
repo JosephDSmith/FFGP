@@ -18,6 +18,8 @@ class Snippet(db.Model, SerializerMixin):
 
     serialize_rules = ('-tags.snippets', '-user.snippets')
 
+    ALLOWED_EXTENSIONS = ["png", "jpg", "jpeg", "gif"]
+
     @validates("text_content", "image_content")
     def validate_content(self, key, value):
         if value is None and self.text_content is None and self.image_content is None:
@@ -25,6 +27,15 @@ class Snippet(db.Model, SerializerMixin):
                 "At least one of text_content or image_content must have a value."
             )
         return value
+    
+    @validates("image_content")
+    def validates_image_content(self, key, image_content):
+        file_extension = image_content.rsplit(".", 1)[1].lower()
+        if file_extension not in Snippet.ALLOWED_EXTENSIONS:
+            raise ValueError(
+                "Invalid image_content file type. Allowed file types: png, jpg, jpeg, gif"
+            )
+        return image_content
 
     def __repr__(self):
         return f"<Snippet {self.id=}>"
