@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import UserContext from '../../functionality/UserContext'
 import { UserContextType, UserType } from '../../functionality/types';
+import { useNavigate } from 'react-router-dom';
 
 interface AuthorizationProps {
   // Define any props being passed to Authorization component
@@ -11,7 +12,8 @@ interface AuthorizationProps {
 
 const Authorization: React.FC<AuthorizationProps> = (props) => {
   const [isSignup, setIsSignup] = useState(false);
-  const {setUser} = useContext(UserContext) as UserContextType
+  const { setUser } = useContext(UserContext) as UserContextType
+  const nav = useNavigate();
 
   const toggleSignup = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
@@ -28,8 +30,8 @@ const Authorization: React.FC<AuthorizationProps> = (props) => {
     password: Yup.string().required('Password is required'),
     confirmPassword: isSignup
       ? Yup.string()
-          .oneOf([Yup.ref('password')], 'Passwords must match')
-          .required('Confirm password is required')
+        .oneOf([Yup.ref('password')], 'Passwords must match')
+        .required('Confirm password is required')
       : Yup.string(),
   });
 
@@ -37,12 +39,13 @@ const Authorization: React.FC<AuthorizationProps> = (props) => {
     console.log('Form submitted:', values);
     // Handle authentication logic here
     const newUser: UserType = {
-      id: '1', 
+      id: '1',
       email: values.email,
-      is_admin: false, 
-      snippets: [] 
+      is_admin: false,
+      snippets: []
     };
-    setUser(newUser)
+    setUser(newUser);
+    nav('/home');
   };
 
   return (
@@ -51,6 +54,9 @@ const Authorization: React.FC<AuthorizationProps> = (props) => {
         <h2>{isSignup ? 'Sign Up' : 'Login'}</h2>
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
           <Form>
+            <div>
+              <a href='/google'>Login with Google</a>
+            </div>
             <div>
               <label htmlFor="email">Email:</label>
               <Field type="email" id="email" name="email" />
