@@ -14,9 +14,9 @@ class Snippet(db.Model, SerializerMixin):
     text_content = db.Column(db.String, nullable=True)
     image_content = db.Column(db.String, nullable=True)
     tags = db.relationship("Tag", secondary=snippets_tags, back_populates="snippets")
-    user = db.relationship("User", back_populates='snippets')
+    user = db.relationship("User", back_populates="snippets")
 
-    serialize_rules = ('-tags.snippets', '-user.snippets')
+    serialize_rules = ("-tags.snippets", "-user.snippets")
 
     ALLOWED_EXTENSIONS = ["png", "jpg", "jpeg", "gif"]
 
@@ -27,15 +27,16 @@ class Snippet(db.Model, SerializerMixin):
                 "At least one of text_content or image_content must have a value."
             )
         return value
-    
-    @validates("image_content")
-    def validates_image_content(self, key, image_content):
-        file_extension = image_content.rsplit(".", 1)[1].lower()
-        if file_extension not in Snippet.ALLOWED_EXTENSIONS:
-            raise ValueError(
-                "Invalid image_content file type. Allowed file types: png, jpg, jpeg, gif"
-            )
-        return image_content
+
+    # @validates("image_content")
+    # def validate_image_content(self, key, value):
+    #     if value:
+    #         file_extension = value.rsplit(".", 1)[1].lower()
+    #     if file_extension not in Snippet.ALLOWED_EXTENSIONS:
+    #         raise ValueError(
+    #             "Invalid image_content file type. Allowed file types: png, jpg, jpeg, gif"
+    #         )
+    #     return value
 
     def __repr__(self):
         return f"<Snippet {self.id=}>"
