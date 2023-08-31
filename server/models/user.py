@@ -12,7 +12,7 @@ class User(db.Model, SerializerMixin):
     email = db.Column(db.String, nullable=False, unique=True)
     is_admin = db.Column(db.Boolean, default=False)
     _password_hash = db.Column(db.String)
-    sinppets = db.relationship("Snippet", back_populates="user")
+    snippets = db.relationship("Snippet", back_populates="user")
 
     @validates("email")
     def validate_email(self, key, email):
@@ -24,4 +24,4 @@ class User(db.Model, SerializerMixin):
         return email
 
     def __repr__(self):
-        return f"Id: {self.id} Email:{self.email}>"
+        return f"<User {self.id=} {self.email=}>"

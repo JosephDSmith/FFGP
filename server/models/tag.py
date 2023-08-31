@@ -16,4 +16,4 @@ class Tag(db.Model, SerializerMixin):
 
 
     def __repr__(self):
-        return f"<Name:{self.name}>"
+        return f"<Tag {self.name=}>"
