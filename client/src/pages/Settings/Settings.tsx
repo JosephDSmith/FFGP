@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Settings.css'; 
+import UserContext from '../../functionality/UserContext';
+import { UserContextType } from '../../functionality/types';
 
 interface SettingsProps {
   // Define any props being passed to Settings component
 }
 
 const Settings: React.FC<SettingsProps> = (props) => {
+  const { user } = useContext(UserContext) as UserContextType;
+  // Type assertion ---------------^
+
+  console.log(user);
+
   return (
     <div className="settings">
-      {/* Settings content goes here */}
-      <h1>THIS IS SETTINGS </h1>
+      {/* Display user data */}
+      {user ? (
+        <div>
+          <h1>Welcome to Settings, {user.email}!</h1>
+          {/* Other settings content goes here */}
+        </div>
+      ) : (
+        <h1>No user data available</h1>
+      )}
     </div>
   );
 };
