@@ -16,6 +16,8 @@ class Snippet(db.Model, SerializerMixin):
     tags = db.relationship("Tag", secondary=snippets_tags, back_populates="snippets")
     user = db.relationship("User", back_populates='snippets')
 
+    serialize_rules = ('-tags.snippets', '-user.snippets')
+
     @validates("text_content", "image_content")
     def validate_content(self, key, value):
         if value is None and self.text_content is None and self.image_content is None:
