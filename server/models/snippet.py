@@ -13,7 +13,8 @@ class Snippet(db.Model, SerializerMixin):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     text_content = db.Column(db.String, nullable=True)
     image_content = db.Column(db.String, nullable=True)
-    tags = db.realtionship("Tag", secondary=snippets_tags, back_populates="snippets")
+    tags = db.relationship("Tag", secondary=snippets_tags, back_populates="snippets")
+    user = db.relationship("User", back_populates='snippets')
 
     @validates("text_content", "image_content")
     def validate_content(self, key, value):
@@ -24,4 +25,4 @@ class Snippet(db.Model, SerializerMixin):
         return value
 
     def __repr__(self):
-        return f"<Snippet id={self.id}>"
+        return f"<Snippet {self.id=}>"

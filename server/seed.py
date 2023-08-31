@@ -6,8 +6,13 @@ fake = Faker()
 with app.app_context():
     print("Starting seed...")
     Snippet.query.delete()
-    for _ in range(1000):
-        snippet = Snippet(content=fake.text())
-        db.session.add(snippet)
+    User.query.delete()
+    Tag.query.delete()
+    
+    user = User(email='asdf@asdf.com')
+    snippet = Snippet(text_content='asdf')
+    user.snippets.append(snippet)
+    db.session.add(user)
+    db.session.add(snippet)
     db.session.commit()
     print("Finished seed!")
