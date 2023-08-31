@@ -18,6 +18,8 @@ jsonify = "*"
 flask-bcrypt = "*"
 python-dotenv = "*"
 psycopg2 = "*"
+authlib = "*"
+requests = "*"
 
 [dev-packages]
 
