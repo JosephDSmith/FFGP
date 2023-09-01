@@ -22,8 +22,7 @@ oauth.register(
     }
 )
 
-# This constructs a redirect URI to the Google oauth server 
-# and redirects the user there
+# This is a route the React front end can call to get session data
 @app.route('/api/authorized')
 def check_auth():
   if session.get('email'):
@@ -31,6 +30,8 @@ def check_auth():
   else:
     return jsonify({"error": "unauthorized"}), 401
 
+# This constructs a redirect URI to the Google oauth server 
+# and redirects the user there
 @app.route('/google/')
 def google():
   redirect_uri = url_for('google_auth', _external=True)
@@ -53,8 +54,12 @@ def google_auth():
   session['token'] = token['access_token']
   db_user = User.query.filter_by(email=email).first()
   if not db_user:
-    db.session.add(User(email=email, picture=picture))
+    new_user = User(email=email, picture=picture)
+    db.session.add(new_user)
     db.session.commit()
+    session['user_id'] = new_user.id 
+  else:
+    session['user_id'] = db_user.id
   return redirect('/')
 
 
