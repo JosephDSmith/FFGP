@@ -1,8 +1,9 @@
 import os
-from config import app 
+from config import app, db
 from flask import Flask, url_for, session, redirect, jsonify
 from authlib.common.security import generate_token
 from authlib.integrations.flask_client import OAuth
+from models.models import User
 import requests
 
 oauth = OAuth(app)
@@ -45,10 +46,15 @@ def google_auth():
   user = oauth.google.parse_id_token(token, nonce=session['nonce'])
   if user.get('nonce') != session.get('nonce'):
     return 'Invalid nonce', 400
-  session['email'] = user['email']
-  session['picture'] = user['picture']
+  email = user['email']
+  session['email'] = email
+  picture = user['picture']
+  session['picture'] = picture
   session['token'] = token['access_token']
-  print(session['email'])
+  db_user = User.query.filter_by(email=email).first()
+  if not db_user:
+    db.session.add(User(email=email, picture=picture))
+    db.session.commit()
   return redirect('/')
 
 
