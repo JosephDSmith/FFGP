@@ -19,6 +19,7 @@ const Settings: React.FC<SettingsProps> = (props) => {
       {user ? (
         <div>
           <h1>Welcome to Settings, {user.email}!</h1>
+          <img alt='profile pic' src={user.picture} />
           {/* Other settings content goes here */}
         </div>
       ) : (

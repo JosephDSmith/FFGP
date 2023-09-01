@@ -11,7 +11,7 @@ class User(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String, nullable=False, unique=True)
     is_admin = db.Column(db.Boolean, default=False)
-    _password_hash = db.Column(db.String)
+    picture = db.Column(db.String)
     snippets = db.relationship("Snippet", back_populates="user")
 
     serialize_rules = ("-snippets.user")

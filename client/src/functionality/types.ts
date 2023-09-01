@@ -2,6 +2,7 @@ export interface UserType {
   id: string;
   email: string;
   is_admin: boolean;
+  picture?: string;
   snippets: string[];
 }
 
