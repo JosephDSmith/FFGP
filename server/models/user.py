@@ -14,7 +14,7 @@ class User(db.Model, SerializerMixin):
     picture = db.Column(db.String)
     snippets = db.relationship("Snippet", back_populates="user")
 
-    serialize_rules = ("-snippets.user")
+    # serialize_rules = ("-snippets.user")
 
     @validates("email")
     def validate_email(self, key, email):

@@ -4,24 +4,18 @@ from models.models import Tag, Snippet
 from config import api, db
 
 
-class Tag(Resource):
-    def get(self, tag_id):
-        tag = Tag.query.get(tag_id)
+class Tags(Resource):
 
-        if not tag:
-            response = make_response({"error": "Tag not found"}, 404)
-        else:
-            snippets_with_tag = [snippet.to_dict() for snippet in tag.snippets]
-            response = make_response(snippets_with_tag, 200)
-        
-        return response
-    
-    def get_all(self):
+    def get(self):
         tags = Tag.query.all()
         tag_list = [tag.to_dict() for tag in tags]
         return tag_list, 200
 
-
+class TagById(Resource):
+    def get(self, id):
+        tag = Tag.query.filter_by(id=id).first()
+        return tag.to_dict(), 200
+        
 
 class SnippetTag(Resource):
     def get(self, id):
@@ -54,9 +48,9 @@ class SnippetTag(Resource):
 
       return response
     
-    def delete(self, snippet_id, tag_id):
+    def delete(self, snippet_id, id):
         snippet = Snippet.query.get(snippet_id)
-        tag = Tag.query.get(tag_id)
+        tag = Tag.query.get(id)
 
         if not snippet or not tag:
             return {"error": "Snippet or tag not found"}, 404
@@ -69,8 +63,9 @@ class SnippetTag(Resource):
             return {"error": "Tag is not associated with the snippet"}, 400
 
 
-api.add_resource(Tag, "/api/tags/<int:id>", "/api/tags")
+api.add_resource(Tags, "/api/tags", "/api/tags")
+api.add_resource(TagById, "/api/tags/<int:id>")
 api.add_resource(SnippetTag, "/api/snippets/<int:id>/tag", endpoint="snippet_tag_single")
-api.add_resource(SnippetTag, "/api/snippets/<int:snippet_id>/tag/<int:tag_id>", endpoint="snippet_tag_multiple")
+api.add_resource(SnippetTag, "/api/snippets/<int:snippet_id>/tag/<int:id>", endpoint="snippet_tag_multiple")
 
 

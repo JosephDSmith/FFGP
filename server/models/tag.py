@@ -14,7 +14,7 @@ class Tag(db.Model, SerializerMixin):
         "Snippet", secondary=snippets_tags, back_populates="tags"
     )
 
-    serialize_rules = ('-snippets.tags')
+    # serialize_rules = ('-snippets.tags')
 
 
     def __repr__(self):
