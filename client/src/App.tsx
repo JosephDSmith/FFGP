@@ -5,6 +5,8 @@ import Authorization from './pages/Authorization';
 import Home from './pages/Home';
 import Languages from './pages/Languages';
 import './App.css'
+import Discover from './pages/Discover';
+import Contribute from './pages/Contribute';
 // import './tailwind.css'
 // comment in or out line 9 to see tailwind
 // to build the tailwind.css file, run the following command from the client folder:
@@ -20,7 +22,8 @@ export default function App() {
             <Route path="/" element={<Authorization />} />
             <Route path="/home" element={<Home />} />
             <Route path="/languages" element={<Languages />} />
-            {/* add routes for discover and contrubute */}
+            <Route path="/discover" element={<Discover />} />
+            <Route path="/contribute" element={<Contribute />} />
           </Routes>
         </div>
         <Footer />
