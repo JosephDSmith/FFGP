@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SnippetType } from '../../functionality/types';
-import './Home.css';
+import { SnippetType } from '../functionality/types';
 
 interface HomeProps {
   // Define any props being passed to Home component

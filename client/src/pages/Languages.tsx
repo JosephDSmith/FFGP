@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {TagType} from '../../functionality/types';
-import './Languages.css'; 
+import {TagType} from '../functionality/types';
 
 interface LanguagesProps {
   // Define any props being passed to Languages component
