@@ -1,0 +1,11 @@
+.snippet {
+  background-color: gray;
+  padding: 10px;
+  margin: 10px;
+}
+
+.snippet img{
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}

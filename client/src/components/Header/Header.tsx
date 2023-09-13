@@ -10,7 +10,7 @@ const Header: React.FC<HeaderProps> = (props) => {
   return (
     <header className="header">
       {/* Header content goes here */}
-      <h1>THIS IS HEADER </h1>
+      <h1 className="text-3xl font-bold underline">THIS IS HEADER </h1>
       <Navigation />
     </header>
   );
