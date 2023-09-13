@@ -1,10 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Authorization from './pages/Auth/Authorization';
-import Home from './pages/Home/Home';
-import Languages from './pages/Languages/Languages';
-import Settings from './pages/Settings/Settings';
+import Authorization from './pages/Authorization';
+import Home from './pages/Home';
+import Languages from './pages/Languages';
 import './App.css'
 // import './tailwind.css'
 // comment in or out line 9 to see tailwind
@@ -21,7 +20,7 @@ export default function App() {
             <Route path="/" element={<Authorization />} />
             <Route path="/home" element={<Home />} />
             <Route path="/languages" element={<Languages />} />
-            <Route path="/settings" element={<Settings />} />
+            {/* add routes for discover and contrubute */}
           </Routes>
         </div>
         <Footer />
