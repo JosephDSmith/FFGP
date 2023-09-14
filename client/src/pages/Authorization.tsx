@@ -1,16 +1,40 @@
-import React from 'react';
+import {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthCard from '../components/Authorization/AuthCard';
 import HalfCircle from '../components/Authorization/HalfCircle';
 
 const Authorization = () => {
   const nav = useNavigate();
+  const [popup, setPopup] = useState<Window|null>(null);
 
   const handleGoogleLogin = () => {
-    // Perform the Google OAuth login logic here
-    // After successful login, navigate to the home page
-    nav('/home');
+    const width = 500;
+    const height = 400;
+    const left = window.screenX + (window.outerWidth - width) / 2;
+    const top = window.screenY + (window.outerHeight - height) / 2.5;
+    const title = 'Login with Google';
+    const url = 'http://127.0.0.1:5555/google'
+    window.open(url, title, `width=${width},height=${height},left=${left},top=${top}`);
+    setPopup(popup);
+    
   };
+
+  useEffect(() => {
+    // Add the message listener
+    const messageEventListener = (event:MessageEvent) => {
+      console.log(event.data.url);
+      if (event.data.url && event.data.url.match('/google/auth')) {        
+        nav('/home');
+      }
+    };
+
+    window.addEventListener('message', messageEventListener);
+
+    return () => {
+      window.removeEventListener('message', messageEventListener);
+    };
+  }, [popup]);
+
 
   return (
     <div className="authorization flex">
