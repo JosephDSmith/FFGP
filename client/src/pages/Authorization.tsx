@@ -13,7 +13,7 @@ const Authorization = () => {
     const left = window.screenX + (window.outerWidth - width) / 2;
     const top = window.screenY + (window.outerHeight - height) / 2.5;
     const title = 'Login with Google';
-    const url = 'http://127.0.0.1:5555/google'
+    const url = '/google'
     window.open(url, title, `width=${width},height=${height},left=${left},top=${top}`);
     setPopup(popup);
     
