@@ -60,7 +60,7 @@ def google_auth():
     session['user_id'] = new_user.id 
   else:
     session['user_id'] = db_user.id
-  return redirect('/')
+  return '<html> Success!<script type="text/javascript"> window.onload = function() { window.opener.postMessage({ url: window.location.href }, \'*\'); window.close(); } </script></html>'
 
 
 # Log out
