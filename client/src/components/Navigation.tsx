@@ -19,11 +19,19 @@ const NavLink: React.FC<{ to: string; children: string }> = ({ to, children }) =
 const Navigation: React.FC<NavigationProps> = () => {
   return (
     <div className="navigation text-center">
-      <div className="flex justify-center space-x-20">
-        <NavLink to="/">auth</NavLink> {/* This will be replaced by a "login" button that will display only when the user is not logged in - logic pending */}
-        <NavLink to="/languages">languages</NavLink>
-        <NavLink to="/discover">discover</NavLink>
-        <NavLink to="/contribute">contribute</NavLink>
+      <div className="flex justify-center">
+        <div className="sm:hidden space-x-20">
+          <NavLink to="/">❤️</NavLink>
+          <NavLink to="/languages">❤️</NavLink>
+          <NavLink to="/discover">❤️</NavLink>
+          <NavLink to="/contribute">❤️</NavLink>
+        </div>
+        <div className="hidden sm:flex space-x-20">
+          <NavLink to="/">auth</NavLink>
+          <NavLink to="/languages">languages</NavLink>
+          <NavLink to="/discover">discover</NavLink>
+          <NavLink to="/contribute">contribute</NavLink>
+        </div>
       </div>
     </div>
   );
