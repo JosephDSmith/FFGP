@@ -1,5 +1,5 @@
 export interface UserType {
-  id: string;
+  id: number;
   email: string;
   is_admin: boolean;
   picture?: string;
@@ -9,6 +9,7 @@ export interface UserType {
 export interface UserContextType {
   user: UserType | null;
   setUser: React.Dispatch<React.SetStateAction<UserType | null>>;
+  logout: () => void; 
 }
 
 export interface SnippetType{
