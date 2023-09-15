@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const WelcomeMessage = () => {
+const WelcomeMessage: FC = () => {
   return (
     <div>
       <h2 className="text-2xl font-semibold mb-4">Welcome!</h2>
@@ -8,7 +8,7 @@ const WelcomeMessage = () => {
         We suggest you log in with your Google <br />account for full access to all features.
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default WelcomeMessage
+export default WelcomeMessage;
