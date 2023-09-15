@@ -10,7 +10,7 @@ const Header: React.FC = () => {
     <header className="bg-gray-200 absolute top-0 left-0 right-0 p-4">
       <div className="container mx-auto">
         <h1 className="text-xl text-black text-right">
-          <Link to="/home" className="hover:text-blue-500">
+          <Link to="/" className="hover:text-blue-500">
             [APP LOGO]
           </Link>
         </h1>
