@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { SnippetType } from '../functionality/types';
+import CounterHeader from '../components/Home/CounterHeader';
+import UserDetails from '../components/Home/UserDetails';
+import ContributeBlurb from '../components/Home/ContributeBlurb';
+import TagsDiscovery from '../components/Home/TagsDiscovery';
 
 interface HomeProps {
   // Define any props being passed to Home component
@@ -8,17 +12,23 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = (props) => {
   const [snippets, setSnippets] = useState<SnippetType[]>([]);
 
-  useEffect(() => {
+  useEffect( () => {
     fetch('/api/snippets')
       .then(r => r.json())
-      .then(d => setSnippets(d))
+      .then(d => {
+        setSnippets(d)
+      })
+  },[])
 
-  }, [])
   return (
+
     <div className="home">
+      <CounterHeader count={snippets.length} />
+      <UserDetails />
+      <ContributeBlurb />
+      <TagsDiscovery />
       {/* Home content goes here */}
-      <h1>THIS IS HOME </h1>
-      {snippets.map(s => (
+      {/* {snippets.map(s => (
         <div className='snippet'>
           <div>
             <b>Text content: </b>
@@ -34,7 +44,8 @@ const Home: React.FC<HomeProps> = (props) => {
             <b>Tags: </b>
             {s.tags?.map(t => t.name).join(', ')}
           </div>
-        </div>))}
+        </div>))} */}
+
     </div>
   );
 };
