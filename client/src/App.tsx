@@ -24,7 +24,7 @@ export default function App() {
       <Router>
         <Header />
         {user && <UserSidebar user={user}/>}
-        <div className="px-4 pt-24">
+        <div className="px-4 pt-24 mb-24">
           <Routes>
             {/* Render the Authorization component only if no user is logged in, otherwise render Home*/}
               {/* {user === null ? (
@@ -36,6 +36,7 @@ export default function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/languages" element={<Languages />} />
             <Route path="/discover" element={<Discover />} />
+            <Route path="/discover/:tagId" element={<Discover />} />
             <Route path="/contribute" element={<Contribute />} />
           </Routes>
         </div>
