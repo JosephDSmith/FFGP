@@ -1,9 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { UserContext } from './functionality/UserContext';
-import { UserType, UserContextType } from './functionality/types';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/Layout/Header';
+import Footer from './components/Layout/Footer';
 import Authorization from './pages/Authorization';
 import Home from './pages/Home';
 import Languages from './pages/Languages';
@@ -18,13 +17,13 @@ import UserSidebar from './components/UserSidebar/UserSidebar';
 
 export default function App() {
   const { user } = useContext(UserContext) || { user: null }; 
-
+  
   return (
     <div className="App">
       <Router>
         <Header />
         {user && <UserSidebar user={user}/>}
-        <div className="px-4 pt-24 mb-24">
+        <div className="">
           <Routes>
             {/* Render the Authorization component only if no user is logged in, otherwise render Home*/}
               {/* {user === null ? (
