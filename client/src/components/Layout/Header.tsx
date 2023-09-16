@@ -1,7 +1,6 @@
 import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../functionality/UserContext';
-import { SnippetType } from '../functionality/types';
+import { UserContext } from '../../functionality/UserContext';
 
 
 interface HeaderProps {
