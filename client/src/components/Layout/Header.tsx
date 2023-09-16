@@ -1,7 +1,6 @@
 import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../functionality/UserContext';
-
+import { UserContext } from '../../functionality/UserContext';
 
 interface HeaderProps {
     // Define any props being passed to Header component
@@ -23,7 +22,6 @@ const Header: React.FC = () => {
         </Link>
     </div>
   </header>
-  
   )
 }
 
