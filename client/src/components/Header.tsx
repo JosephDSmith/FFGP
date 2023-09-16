@@ -7,15 +7,18 @@ interface HeaderProps {
 
 const Header: React.FC = () => {
   return (
-    <header className="bg-gray-200 absolute top-0 left-0 right-0 p-4">
-      <div className="container mx-auto">
-        <h1 className="text-xl text-black text-right">
-          <Link to="/" className="hover:text-blue-500">
-            [APP LOGO]
-          </Link>
-        </h1>
-      </div>
-    </header>
+    <header className="bg-gray-200 absolute top-0 left-0 right-0 p-4 items-end">
+      <div className="text-black flex justify-end"> 
+        <Link to="/">
+          <div className='flex items-center text-gray-500'>
+            Snippets 	&lt;            
+            <img alt='logo' className='w-10' src='/snippets_logo_small.png' />
+            /	&gt;
+            </div>
+        </Link>
+    </div>
+  </header>
+  
   )
 }
 
