@@ -1,4 +1,5 @@
-import React, { createContext, useState, ReactNode, useContext, useEffect } from "react";
+import { createContext, useState, ReactNode, useEffect } from "react";
+
 import { UserType, UserContextType } from './types';
 import { isDevelopmentMode, mockUser } from './development'
 
@@ -46,12 +47,4 @@ export function UserProvider({ children }: { children: ReactNode }) {
       {children}
     </UserContext.Provider>
   );
-}
-
-export function useUser() {
-  const context = useContext(UserContext);
-  if (context === undefined) {
-    throw new Error("useUser must be used within a UserProvider");
-  }
-  return context;
 }
