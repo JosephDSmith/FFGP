@@ -21,7 +21,7 @@ const Languages: React.FC<LanguagesProps> = (props) => {
       {/* Languages content goes here */}
       <h1>THIS IS LANGUAGES </h1>
       There are {tags.length} total tags 
-      {tags.map(t => (<div>{t.name}: {t.snippets.length} snippets</div>))}
+      {tags.map(t => (<div key={t.name}>{t.name}: {t.snippets.length} snippets</div>))}
     </div>
   );
 };
