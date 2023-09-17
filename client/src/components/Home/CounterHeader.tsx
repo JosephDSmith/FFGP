@@ -6,7 +6,7 @@ interface CounterHeaderProps {
 
 const CounterHeader: React.FC<CounterHeaderProps> = ({ count }) => {
   return (
-    <div className="text-center bg-blue-400 p-24 w-100% ">
+    <div className="text-center bg-gray-100 p-24 w-100% ">
       <p className="text-base">
         At [snippets], it's our amazing community of users that makes us stand out! <br />
         Just like you, passionate individuals from all around the world have contributed to our growing library of code snippets. <br />

@@ -7,7 +7,7 @@ const UserDetails: React.FC<UserDetailsProps> = () => {
   const { user } = useContext(UserContext) || { user: null }
 
   return (
-    <div className="user-details p-24 text-center bg-blue-200">
+    <div className="user-details p-24 text-center bg-white">
       <img
         src={user?.picture || 'https://t.ly/JM6x_'}
         alt="User Profile"

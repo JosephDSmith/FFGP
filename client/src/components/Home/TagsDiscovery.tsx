@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 interface TagsDiscoveryProps {
 
@@ -7,7 +6,7 @@ interface TagsDiscoveryProps {
 
 const TagsDiscovery: React.FC<TagsDiscoveryProps> = () => {
   return (
-    <div className="text-center bg-blue-200 p-20 w-100% ">
+    <div className="text-center bg-white p-20 w-100% ">
       <p className="text-base">
       Dive into the world of coding and explore new programming languages. 
       Our platform is a hub for not only finding solutions but also for broadening your coding horizons. 
