@@ -7,7 +7,7 @@ const UserDetails: React.FC<UserDetailsProps> = () => {
   const { user } = useContext(UserContext) || { user: null }
 
   return (
-    <div className="user-details p-24 text-center bg-white">
+    <div className="user-details p-24 text-center bg-white m-w-m">
       <img
         src={user?.picture || 'https://t.ly/JM6x_'}
         alt="User Profile"
@@ -16,11 +16,11 @@ const UserDetails: React.FC<UserDetailsProps> = () => {
       <div className="text-lg font-semibold">
         {user?.email || 'User Email'}
         </div>
-      <div className="flex justify-between">
-        <div className="text-sm text-gray-500 bg-gray-200 p-1 flex-1 text-left rounded-xl">
+      <div className="flex justify-between max-w-sm m-auto gap-2">
+        <div className="text-sm text-gray-500 bg-gray-200 p-1 flex-1 text-left rounded-xl ">
           contributions:
         </div>
-        <div className="text-sm text-gray-500 bg-gray-200 p-1 flex-1 text-right rounded-xl">
+        <div className="text-sm text-gray-500 bg-gray-200 p-1 flex-1 text-right rounded-xl max-w-sm">
           10010
         </div>
       </div>

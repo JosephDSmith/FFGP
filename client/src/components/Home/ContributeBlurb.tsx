@@ -6,7 +6,7 @@ interface CounterHeaderProps {}
 
 const ContributeBlurb: React.FC<CounterHeaderProps> = () => {
   return (
-    <div className="text-center bg-gray-100 p-20 w-100%">
+    <div className="text-center p-20 w-100% max-w-2xl m-auto">
       <p className="text-base m-1">
         Are you ready to make a difference? Contribute your own code snippets
         and help shape our vibrant community. Whether you're a seasoned pro or

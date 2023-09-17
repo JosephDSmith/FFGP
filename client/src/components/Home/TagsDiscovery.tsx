@@ -10,7 +10,7 @@ const TagsDiscovery: React.FC<TagsDiscoveryProps> = () => {
       <p className="text-base">
       Dive into the world of coding and explore new programming languages. 
       Our platform is a hub for not only finding solutions but also for broadening your coding horizons. 
-      Discover exciting languages, techniques, and approaches you might not have encountered otherwise. <br/>
+      Discover exciting languages, techniques, and approaches you might not have encountered otherwise. <br/><br/>
       Click on one of the tags below to find out more! 
       </p>
     {/* random tags logic here for discovery  */}
