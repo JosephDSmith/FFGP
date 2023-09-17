@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { UserContext } from './functionality/UserContext';
 import Header from './components/Layout/Header';
 import Footer from './components/Layout/Footer';
