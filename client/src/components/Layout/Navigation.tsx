@@ -27,7 +27,6 @@ const Navigation: React.FC<NavigationProps> = () => {
           <NavLink to="/contribute">❤️</NavLink>
         </div>
         <div className="hidden sm:flex space-x-20">
-          <NavLink to="/">auth</NavLink>
           <NavLink to="/languages">languages</NavLink>
           <NavLink to="/discover">discover</NavLink>
           <NavLink to="/contribute">contribute</NavLink>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { UserType } from '../../functionality/types';
 
 interface ToggleIconProps {
@@ -8,7 +8,7 @@ interface ToggleIconProps {
 
 const ToggleIcon: React.FC<ToggleIconProps> = ({ user, onTogglePopup }) => {
   return (
-    <div className="cursor-pointer mt-16" >
+    <div className="cursor-pointer mt-20" >
       <img 
         onClick={onTogglePopup}
         src={user?.picture || 'https://t.ly/JM6x_'}

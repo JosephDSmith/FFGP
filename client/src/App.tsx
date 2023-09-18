@@ -1,37 +1,26 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from './functionality/UserContext';
-import { UserType, UserContextType } from './functionality/types';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/Layout/Header';
+import Footer from './components/Layout/Footer';
 import Authorization from './pages/Authorization';
 import Home from './pages/Home';
 import Languages from './pages/Languages';
-import './App.css'
 import Discover from './pages/Discover';
 import Contribute from './pages/Contribute';
 import UserSidebar from './components/UserSidebar/UserSidebar';
-// import './tailwind.css'
-// comment in or out line 9 to see tailwind
-// to build the tailwind.css file, run the following command from the client folder:
-// npx tailwindcss build -o src/tailwind.css
+import './App.css'
 
 export default function App() {
   const { user } = useContext(UserContext) || { user: null }; 
-
+  
   return (
     <div className="App">
       <Router>
         <Header />
         {user && <UserSidebar user={user}/>}
-        <div className="px-4 pt-24 mb-24">
+        <div className="mt-4">
           <Routes>
-            {/* Render the Authorization component only if no user is logged in, otherwise render Home*/}
-              {/* {user === null ? (
-                <Route path="/" element={<Authorization />} />
-              ) : (
-                <Route path="/" element={<Home />} />
-              )} */}
             <Route path="/" element={<Authorization />} />
             <Route path="/home" element={<Home />} />
             <Route path="/languages" element={<Languages />} />

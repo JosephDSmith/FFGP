@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { UserType } from '../../functionality/types';
 
 interface SidebarContentProps {
@@ -34,7 +34,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ user, isOpen, onClose, 
     <div className="navbar-container relative">
       <div
         ref={sidebarRef}
-        className={`fixed top-0 ${isOpen ? 'left-0' : '-left-1/8'} h-full w-1/8 bg-white border rounded-2xl-lg shadow-lg transition-transform duration-300 ease-in-out p-3.5`}
+        className={`fixed top-0 ${isOpen ? 'left-0' : '-left-1/8'} h-full w-1/8 bg-white border rounded-2xl-lg shadow-lg transition-transform duration-300 ease-in-out p-3.5 z-50`}
         onClick={handleSidebarClick}
         style={{ display: isOpen ? 'block' : 'none' }}
       >

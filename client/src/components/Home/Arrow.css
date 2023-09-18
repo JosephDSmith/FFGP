@@ -1,0 +1,55 @@
+.arrow {
+
+    opacity: 0;
+    position: absolute;
+    left: 30%;
+    margin-left: 10%;
+    margin-top:5px;
+    /* top: 50%; */
+    transform-origin: 50% 50%;
+    transform: translate3d(-30%, -30%, 0);
+    z-index: 0;
+}
+
+.arrow-first {
+    animation: arrow-movement 2s ease-in-out infinite; 
+}
+.arrow-second {
+    animation: arrow-movement 2s 1s ease-in-out infinite;
+}
+
+.arrow:before,
+.arrow:after {
+    background: #bbbbbb;
+    content: '';
+    display: block;
+    height: 3px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+}
+
+.arrow:before {
+    transform: rotate(-45deg) translateX(-10px);
+    transform-origin: top left;
+}
+
+.arrow:after {
+    transform: rotate(45deg) translateX(-19px); 
+    transform-origin: top right;
+}
+
+@keyframes arrow-movement {
+    0% {
+        opacity: 0;
+        left: 90px;
+    }
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
