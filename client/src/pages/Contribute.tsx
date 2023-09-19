@@ -136,7 +136,7 @@ const Contribute: React.FC<ContributeProps> = () => {
                 placeholder="Enter a new tag"
                 value={newTag}
                 onChange={handleTagChange}
-                className='p-2 mr-5'
+                className='p-2 mr-5 rounded-lg border-2 border-gray-200 text-center'
               />
               <button
                 onClick={handleTagSubmit}
