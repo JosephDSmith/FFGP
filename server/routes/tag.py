@@ -11,6 +11,30 @@ class Tags(Resource):
         tag_list = [tag.to_dict() for tag in tags]
         return tag_list, 200
 
+    def post(self):
+        form_json = request.get_json()
+        try:
+            new_tag = Tag(
+                name=form_json["name"]                
+            )
+            db.session.add(new_tag)
+            db.session.commit()            
+            response = make_response(
+                new_tag.to_dict(),
+                201,
+            )
+            return response
+
+        except IntegrityError as e:
+            db.session.rollback()
+            return {"error": "An unexpected error has occurred"}, 500
+
+        except ValueError as e:
+            db.session.rollback()
+            return {"error": str(e)}, 422
+        finally:
+            db.session.close()
+
 class TagById(Resource):
     def get(self, id):
         tag = Tag.query.filter_by(id=id).first()

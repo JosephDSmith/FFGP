@@ -46,14 +46,27 @@ const Contribute: React.FC<ContributeProps> = () => {
 
   const handleTagSubmit = () => {
     if (newTag.trim() !== "") {
-      const newTagObject: TagType = {
-        id: tags.length + 1, // You can generate an ID as needed
-        name: newTag,
-        snippets: []
-      };
-      setTags([...tags, newTagObject]);
-      setSelectedTags([...selectedTags, newTagObject.id]);
-      setNewTag("");
+      fetch('/api/tags', {
+        method: 'POST',
+        headers: {'Content-type': 'application/json'},
+        body: JSON.stringify({
+          name: newTag
+        })
+      })
+      .then(r => r.json())
+      .then(d => {
+        setTags([...tags, d]);
+        setSelectedTags([...selectedTags, d.id]);
+        setNewTag("");
+      })
+      // const newTagObject: TagType = {
+      //   id: tags.length + 1, // You can generate an ID as needed
+      //   name: newTag,
+      //   snippets: []
+      // };
+      // setTags([...tags, newTagObject]);
+      // setSelectedTags([...selectedTags, newTagObject.id]);
+      // setNewTag("");
     }
   };
 
@@ -123,6 +136,7 @@ const Contribute: React.FC<ContributeProps> = () => {
                 placeholder="Enter a new tag"
                 value={newTag}
                 onChange={handleTagChange}
+                className='p-2 mr-5'
               />
               <button
                 onClick={handleTagSubmit}

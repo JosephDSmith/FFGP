@@ -12,7 +12,6 @@ class Snippets(Resource):
 
     def post(self):
         form_json = request.get_json()
-        print(form_json)
         try:
             new_snippet = Snippet(
                 text_content=form_json["text_content"],
