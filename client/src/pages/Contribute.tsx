@@ -64,7 +64,18 @@ const Contribute: React.FC<ContributeProps> = () => {
 
   const handleSubmit = () => {
     console.log(textContent, selectedTags, image);
-    // TODO: API FOR SUBMITTING
+    fetch('/api/snippets', {
+      method: 'POST',
+      headers: {'Content-type': 'application/json'},
+      body: JSON.stringify({
+        text_content: textContent,
+        image_content: image,
+        selected_tags: selectedTags
+      })
+    })
+    .then(r => r.json())
+    .then(d => console.log(d))
+
     setTextContent("");
     setImage(null);
     setSelectedTags([]);
