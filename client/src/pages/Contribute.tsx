@@ -6,7 +6,6 @@ import { TagType } from '../functionality/types';
 
 interface ContributeProps { }
 
-
 const Contribute: React.FC<ContributeProps> = () => {
   const [textContent, setTextContent] = useState<string>("");
   const [image, setImage] = useState<File | null>(null);
@@ -15,7 +14,6 @@ const Contribute: React.FC<ContributeProps> = () => {
   const [newTag, setNewTag] = useState<string>("");
   const [showNewTagInput, setShowNewTagInput] = useState<boolean>(false);
 
-  // Fetch tags from the API
   useEffect(() => {
     const fetchTags = async () => {
       try {
@@ -48,25 +46,17 @@ const Contribute: React.FC<ContributeProps> = () => {
     if (newTag.trim() !== "") {
       fetch('/api/tags', {
         method: 'POST',
-        headers: {'Content-type': 'application/json'},
+        headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({
           name: newTag
         })
       })
-      .then(r => r.json())
-      .then(d => {
-        setTags([...tags, d]);
-        setSelectedTags([...selectedTags, d.id]);
-        setNewTag("");
-      })
-      // const newTagObject: TagType = {
-      //   id: tags.length + 1, // You can generate an ID as needed
-      //   name: newTag,
-      //   snippets: []
-      // };
-      // setTags([...tags, newTagObject]);
-      // setSelectedTags([...selectedTags, newTagObject.id]);
-      // setNewTag("");
+        .then(r => r.json())
+        .then(d => {
+          setTags([...tags, d]);
+          setSelectedTags([...selectedTags, d.id]);
+          setNewTag("");
+        })
     }
   };
 
@@ -74,31 +64,28 @@ const Contribute: React.FC<ContributeProps> = () => {
     setSelectedTags(selectedTags => [...selectedTags, selectedTag]);
   };
 
-
   const handleSubmit = () => {
     console.log(textContent, selectedTags, image);
     fetch('/api/snippets', {
       method: 'POST',
-      headers: {'Content-type': 'application/json'},
+      headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({
         text_content: textContent,
         image_content: image,
         selected_tags: selectedTags
       })
     })
-    .then(r => r.json())
-    .then(d => console.log(d))
+      .then(r => r.json())
+      .then(d => console.log(d))
 
     setTextContent("");
     setImage(null);
     setSelectedTags([]);
   };
 
-
   const selectedTagObjects = selectedTags
     .map((tagId) => tags.find((tag) => tag.id === tagId))
     .filter((tag) => tag !== undefined) as TagType[];
-
 
   return (
     <div>
@@ -109,7 +96,6 @@ const Contribute: React.FC<ContributeProps> = () => {
       </div>
       <div className='bg-white mb-20'>
         <div className='mx-auto  max-w-2xl p-10'>
-
           <div className="flex-row  text-center">
             <div className="text-xl m-5"> Contribute a snippet</div>
             <input
@@ -128,8 +114,6 @@ const Contribute: React.FC<ContributeProps> = () => {
             />
             <TagList tags={tags} selectedTags={selectedTags} onTagClick={handleTagSelect} />
             <SelectedTags selectedTags={selectedTagObjects} />
-
-
             <div className='m-5'>
               <input
                 type="text"
@@ -146,19 +130,16 @@ const Contribute: React.FC<ContributeProps> = () => {
               </button>
             </div>
           </div>
-
         </div>
         <div className="text-center pb-10">
-        <button
-          className='rounded-md bg-blue-200 p-5 text-center'
-          onClick={handleSubmit}
-        >
-          Submit Snippet with Tag
-        </button>
+          <button
+            className='rounded-md bg-blue-200 p-5 text-center'
+            onClick={handleSubmit}
+          >
+            Submit Snippet with Tag
+          </button>
         </div>
       </div>
-
-
     </div>
   );
 };
