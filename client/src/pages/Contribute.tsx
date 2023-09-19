@@ -59,56 +59,22 @@ const Contribute: React.FC<ContributeProps> = () => {
 
   const handleTagSelect = (selectedTag: number) => {
     setSelectedTags(selectedTags => [...selectedTags, selectedTag]);
-    setTags(tags.filter((tag) => tag.id !== selectedTag));
   };
 
 
   const handleSubmit = () => {
-    // Check if required fields are filled (text content or image)
-    if (!textContent && !image) {
-      // You can display an error message or handle it as needed
-      return;
-    }
-
-    // Create the Snippet object
-    // const newSnippet: Snippet = {
-
-    // };
-
-    // Now you can send the newSnippet object to your backend API
-    // submitSnippet(newSnippet);
-
-    // Optionally, you can reset the form fields
+    console.log(textContent, selectedTags, image);
+    // TODO: API FOR SUBMITTING
     setTextContent("");
     setImage(null);
     setSelectedTags([]);
   };
 
-  const submitSnippet = (snippet: Snippet) => {
-    // Implement the logic to send the snippet to your backend API here
-    // You can use fetch, Axios, or any other method you prefer
-    // For example:
-    // fetch('/api/snippets', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(snippet),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     // Handle the response from your API
-    //   })
-    //   .catch((error) => {
-    //     // Handle errors here
-    //   });
-  };
 
   const selectedTagObjects = selectedTags
     .map((tagId) => tags.find((tag) => tag.id === tagId))
     .filter((tag) => tag !== undefined) as TagType[];
 
-  console.log(selectedTagObjects);
 
   return (
     <div>
