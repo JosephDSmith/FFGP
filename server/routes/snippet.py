@@ -1,7 +1,7 @@
 from flask import request, make_response, session
 from sqlalchemy.exc import IntegrityError
 from flask_restful import Resource
-from models.models import Snippet
+from models.models import Snippet, Tag
 from config import api, db
 
 
@@ -19,6 +19,10 @@ class Snippets(Resource):
                 user_id=session["user_id"],
             )
             db.session.add(new_snippet)
+            db.session.commit()
+            for t in form_json["selected_tags"]:
+                tag = Tag.query.filter_by(id=t).first()
+                new_snippet.tags.append(tag)
             db.session.commit()
 
             response = make_response(
