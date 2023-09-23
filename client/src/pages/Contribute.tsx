@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Snippet } from "../functionality/types";
 import TagList from '../components/Discover/TagList';
 import SelectedTags from '../components/Discover/SelectedTags';
 import { TagType } from '../functionality/types';
@@ -8,11 +7,9 @@ interface ContributeProps { }
 
 const Contribute: React.FC<ContributeProps> = () => {
   const [textContent, setTextContent] = useState<string>("");
-  const [image, setImage] = useState<File | null>(null);
   const [tags, setTags] = useState<TagType[]>([]);
   const [selectedTags, setSelectedTags] = useState<number[]>([]);
   const [newTag, setNewTag] = useState<string>("");
-  const [showNewTagInput, setShowNewTagInput] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchTags = async () => {
@@ -30,12 +27,6 @@ const Contribute: React.FC<ContributeProps> = () => {
 
   const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTextContent(event.target.value);
-  };
-
-  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files && event.target.files[0]) {
-      setImage(event.target.files[0]);
-    }
   };
 
   const handleTagChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,13 +56,12 @@ const Contribute: React.FC<ContributeProps> = () => {
   };
 
   const handleSubmit = () => {
-    console.log(textContent, selectedTags, image);
+    console.log(textContent, selectedTags);
     fetch('/api/snippets', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({
         text_content: textContent,
-        image_content: image,
         selected_tags: selectedTags
       })
     })
@@ -79,7 +69,6 @@ const Contribute: React.FC<ContributeProps> = () => {
       .then(d => console.log(d))
 
     setTextContent("");
-    setImage(null);
     setSelectedTags([]);
   };
 
@@ -104,13 +93,6 @@ const Contribute: React.FC<ContributeProps> = () => {
               value={textContent}
               onChange={handleTextChange}
               className="rounded-lg border-2 border-gray-300 text-center m-5  w-full h-20"
-            />
-            <div>or</div>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              className="m-5"
             />
             <TagList tags={tags} selectedTags={selectedTags} onTagClick={handleTagSelect} />
             <SelectedTags selectedTags={selectedTagObjects} />

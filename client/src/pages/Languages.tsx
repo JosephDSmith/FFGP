@@ -50,7 +50,7 @@ const Languages: React.FC<LanguagesProps> = (props) => {
               className="mx-6 my-1 w-48 rounded-full px-5 py-4 bg-blue-200 hover:bg-blue-400"
               onClick={() => nav('/discover/' + t.id)}
             >
-              {t.name} ({t.snippets.length})
+              {t.name} ({t.snippets?.length})
             </button>
           ))}
         </div>

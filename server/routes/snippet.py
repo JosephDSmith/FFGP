@@ -15,7 +15,6 @@ class Snippets(Resource):
         try:
             new_snippet = Snippet(
                 text_content=form_json["text_content"],
-                image_content=form_json["image_content"],
                 user_id=session["user_id"],
             )
             db.session.add(new_snippet)
