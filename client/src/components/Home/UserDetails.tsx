@@ -6,6 +6,10 @@ interface UserDetailsProps {}
 const UserDetails: React.FC<UserDetailsProps> = () => {
   const { user } = useContext(UserContext) || { user: null }
 
+  console.log(user)
+
+  
+
   return (
     <div className="user-details p-24 text-center bg-white m-w-m">
       <img

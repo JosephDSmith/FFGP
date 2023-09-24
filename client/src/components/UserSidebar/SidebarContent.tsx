@@ -14,6 +14,8 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ user, isOpen, onClose, 
   const sidebarRef = useRef<HTMLDivElement>(null);
   const nav = useNavigate(); // Initialize useHistory
 
+  console.log(user)
+
   const handleSettingsClick = () => {
     setShowDeleteButton(!showDeleteButton);
   };

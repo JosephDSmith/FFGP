@@ -1,14 +1,12 @@
-import {useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
 import { UserContext } from '../functionality/UserContext';
 import AuthCard from '../components/Authorization/AuthCard';
 import HalfCircle from '../components/Authorization/HalfCircle';
 
-
 const Authorization = () => {
   const nav = useNavigate();
-  const [popup, setPopup] = useState<Window|null>(null);
+  const [popup, setPopup] = useState<Window | null>(null);
   const { user, setUser } = useContext(UserContext)!;
 
   const handleGoogleLogin = () => {
@@ -17,18 +15,21 @@ const Authorization = () => {
     const left = window.screenX + (window.outerWidth - width) / 2;
     const top = window.screenY + (window.outerHeight - height) / 2.5;
     const title = 'Login with Google';
-    const url = '/google'
-    window.open(url, title, `width=${width},height=${height},left=${left},top=${top}`);
+    const url = '/google';
+
+    // Open the popup window for Google OAuth
+    const popup = window.open(url, title, `width=${width},height=${height},left=${left},top=${top}`);
     setPopup(popup);
   };
 
   useEffect(() => {
     // Add the message listener
-    const messageEventListener = (event:MessageEvent) => {
-      console.log(event.data.user);
-      if (event.data.url && event.data.url.match('/google/auth')) {   
-        setUser(event.data);
-        nav('/home')
+    const messageEventListener = (event: MessageEvent) => {
+      if (event.data.user) {
+        // Update the user data in your UserContext
+        setUser(event.data.user);
+        // Redirect the user after authentication
+        nav('/home');
       }
     };
 
@@ -37,30 +38,24 @@ const Authorization = () => {
     return () => {
       window.removeEventListener('message', messageEventListener);
     };
-  }, []);
+  }, [setUser, nav]);
 
-  //clears popup once user logs in
+  // Clears popup once the user logs in
   useEffect(() => {
     const popupCloseListener = () => {
-      setPopup(null); 
+      setPopup(null);
     };
-  
+
     if (popup) {
       popup.addEventListener('beforeunload', popupCloseListener);
     }
-  
+
     return () => {
       if (popup) {
         popup.removeEventListener('beforeunload', popupCloseListener);
       }
     };
   }, [popup]);
-
-  // const handleLogout = () => {
-  //   // clear auth token 
-  //   setUser(null)
-  //   nav('/login'); // Replace '/login' with the appropriate URL
-  // };
 
   return (
     <div className="authorization flex">
