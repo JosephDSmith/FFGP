@@ -6,7 +6,7 @@ interface ImageProps {
 }
 
 const Image: FC<ImageProps> = ({ src, alt }) => {
-  return <img src={src} alt={alt} className="w-6 h-6 inline-block mr-2" />;
+  return <img src={src} alt={alt} className="w-5 h-5 inline-block mr-2" />;
 };
 
 export default Image;
