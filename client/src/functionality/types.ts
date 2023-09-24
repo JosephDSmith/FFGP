@@ -17,6 +17,7 @@ export interface SnippetType{
   text_content: string;
   user?: UserType;
   tags?: TagType[];
+  user_id: number;
 }
 export interface TagType{
   name: string;
