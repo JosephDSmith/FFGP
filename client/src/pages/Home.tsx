@@ -27,25 +27,6 @@ const Home: React.FC<HomeProps> = (props) => {
       <UserDetails />
       <ContributeBlurb />
       <TagsDiscovery />
-      {/* Home content goes here */}
-      {/* {snippets.map(s => (
-        <div className='snippet'>
-          <div>
-            <b>Text content: </b>
-            {s.text_content}
-          </div>
-
-          <div>
-            <b>Image content: </b>
-            <img alt='snippet' src={s.image_content} />
-          </div>
-
-          <div>
-            <b>Tags: </b>
-            {s.tags?.map(t => t.name).join(', ')}
-          </div>
-        </div>))} */}
-
     </div>
   );
 };

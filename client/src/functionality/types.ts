@@ -14,7 +14,6 @@ export interface UserContextType {
 
 export interface SnippetType{
   id: number;
-  image_content: string;
   text_content: string;
   user?: UserType;
   tags?: TagType[];
@@ -22,18 +21,5 @@ export interface SnippetType{
 export interface TagType{
   name: string;
   id: number;
-  snippets: SnippetType[];
-}
-
-export interface Tag {
-  id: number;
-  name: string;
-}
-
-export interface Snippet {
-  id: number;
-  image_content: string;
-  text_content: string;
-  user?: UserType;
-  tags?: TagType[];
+  snippets?: SnippetType[];
 }

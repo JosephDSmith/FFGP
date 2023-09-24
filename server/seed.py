@@ -31,24 +31,5 @@ with app.app_context():
         text_snippets.append(s)
     db.session.add_all(text_snippets)
 
-    image_snippets = []
-    for _ in range(100):
-        s = Snippet(image_content=fake.image_url())
-        s.user = rc(users)
-        s.tags.append(rc(tags))
-        s.tags.append(rc(tags))
-        image_snippets.append(s)
-    db.session.add_all(image_snippets)
-
-    both_snippets = []
-    for _ in range(100):
-        s = Snippet(image_content=fake.image_url(), text_content=fake.text(100))
-        s.user = rc(users)
-        s.tags.append(rc(tags))
-        s.tags.append(rc(tags))
-        s.tags.append(rc(tags))
-        both_snippets.append(s)
-    db.session.add_all(both_snippets)
-
     db.session.commit()
     print("Finished seed!")
