@@ -10,6 +10,7 @@ export interface UserContextType {
   user: UserType | null;
   setUser: React.Dispatch<React.SetStateAction<UserType | null>>;
   logout: () => void; 
+  login: () => void;
 }
 
 export interface SnippetType{

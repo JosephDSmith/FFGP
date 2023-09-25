@@ -4,12 +4,10 @@ import { useContext } from 'react';
 import { UserContext } from '../functionality/UserContext';
 import AuthCard from '../components/Authorization/AuthCard';
 
-const PROGRAMMERCOLLAB = "https://i.ibb.co/3T3xGQ4/Programmers-Collaborating.png";
-
 const Authorization = () => {
   const nav = useNavigate();
   const [popup, setPopup] = useState<Window | null>(null);
-  const { user, setUser } = useContext(UserContext)!;
+  const { login } = useContext(UserContext)!;
 
   const handleGoogleLogin = () => {
     const width = 500;
@@ -25,9 +23,8 @@ const Authorization = () => {
   useEffect(() => {
     // Add the message listener
     const messageEventListener = (event: MessageEvent) => {
-      console.log(event.data.user);
       if (event.data.url && event.data.url.match('/google/auth')) {
-        setUser(event.data);
+        login();
         nav('/home');
       }
     };

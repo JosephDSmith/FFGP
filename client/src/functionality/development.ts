@@ -1,6 +1,6 @@
 import { UserType } from './types';
 
-export const isDevelopmentMode = true;
+export const isDevelopmentMode = false;
 
 export const mockUser: UserType = {
   id: 1,
