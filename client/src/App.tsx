@@ -10,6 +10,7 @@ import Discover from './pages/Discover';
 import Contribute from './pages/Contribute';
 import UserSidebar from './components/UserSidebar/UserSidebar';
 import './App.css'
+import UserContributions from './pages/UserContributions';
 
 export default function App() {
   const { user } = useContext(UserContext) || { user: null }; 
@@ -19,14 +20,17 @@ export default function App() {
       <Router>
         <Header />
         {user && <UserSidebar user={user}/>}
-        <div className="mt-4">
+        {!user && <div className="mt-20"></div>}
+        <div className="mt-30">
           <Routes>
             <Route path="/" element={<Authorization />} />
             <Route path="/home" element={<Home />} />
             <Route path="/languages" element={<Languages />} />
             <Route path="/discover" element={<Discover />} />
             <Route path="/discover/:tagId" element={<Discover />} />
-            <Route path="/contribute" element={<Contribute />} />
+            {user && <Route path="/contributions" element={<UserContributions />} />}
+            {user && <Route path="/contribute" element={<Contribute />} />}
+            
           </Routes>
         </div>
         <Footer />

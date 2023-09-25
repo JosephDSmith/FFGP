@@ -14,7 +14,6 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ user, isOpen, onClose, 
   const sidebarRef = useRef<HTMLDivElement>(null);
   const nav = useNavigate(); // Initialize useHistory
 
-  console.log(user)
 
   const handleSettingsClick = () => {
     setShowDeleteButton(!showDeleteButton);
@@ -32,11 +31,16 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ user, isOpen, onClose, 
     }
   };
 
+  const handleViewContributions = () => {
+    nav('/contributions')
+    onClose()
+  }
+
   return (
     <div className="navbar-container relative">
       <div
         ref={sidebarRef}
-        className={`fixed top-0 ${isOpen ? 'left-0' : '-left-1/8'} h-full w-1/8 bg-white border rounded-2xl-lg shadow-lg transition-transform duration-300 ease-in-out p-3.5 z-50`}
+        className={`fixed top-0 ${isOpen ? 'left-0' : '-left-1/8'} h-full w-1/8 bg-white border rounded-2xl-lg shadow-lg transition-transform duration-300 ease-in-out p-3.5 z-50`} // Increase z-index to 50
         onClick={handleSidebarClick}
         style={{ display: isOpen ? 'block' : 'none' }}
       >
@@ -69,7 +73,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ user, isOpen, onClose, 
 
         {/* Action buttons */}
         <div className="flex mt-2 flex-col">
-          <button className="py-2 px-4 my-1 text-white bg-gray-500 rounded-xl">
+          <button className="py-2 px-4 my-1 text-white bg-gray-500 rounded-xl" onClick={handleViewContributions}>
             View Contributions
           </button>
           <button className="py-2 px-4 my-1 text-white bg-gray-500 rounded-xl" onClick={handleSettingsClick}>

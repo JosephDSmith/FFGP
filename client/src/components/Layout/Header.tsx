@@ -11,10 +11,10 @@ const Header: React.FC = () => {
 
   return (
 
-    <header className="bg-gray-200 absolute top-0 left-0 right-0 p-4 items-end">
+    <header className="absolute top-0 left-0 right-0 py-4 items-end">
       <div className="text-black flex justify-end"> 
         <Link to={user ? '/home' : '/'} className="hover:text-blue-500">
-          <div className='flex items-center text-gray-500'>
+          <div className='flex items-center text-black mr-5'>
             Snippets 	&lt;            
             <img alt='logo' className='w-10' src='/snippets_logo_small.png' />
             /	&gt;

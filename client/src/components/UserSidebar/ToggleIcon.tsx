@@ -8,12 +8,12 @@ interface ToggleIconProps {
 
 const ToggleIcon: React.FC<ToggleIconProps> = ({ user, onTogglePopup }) => {
   return (
-    <div className="cursor-pointer mt-20" >
-      <img 
+    <div className="fixed top-5 left-5 z-10">
+      <img
         onClick={onTogglePopup}
         src={user?.picture || 'https://t.ly/JM6x_'}
         alt="User Profile"
-        className="w-10 h-10 m-2 rounded-full"
+        className="w-10 h-10 m-2 rounded-full cursor-pointer"
       />
     </div>
   );

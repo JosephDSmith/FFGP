@@ -16,7 +16,13 @@ const UserSidebar: React.FC<UserSidebarProps> = ({ user }) => {
   };
 
   const handleLogout = () => {
-    togglePopup(); 
+    fetch("/clear")
+    .then(r => {
+      if(r.ok){
+        togglePopup(); 
+      }})
+    
+
   };
 
   return (
