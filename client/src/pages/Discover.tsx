@@ -15,7 +15,7 @@ const Discover: React.FC<DiscoverProps> = () => {
   const [selectedTags, setSelectedTags] = useState<number[]>([]);
   const [snippets, setSnippets] = useState<SnippetType[]>([]);
   const [filteredSnippets, setFilteredSnippets] = useState<SnippetType[]>([]);
-  console.log(tagId)
+  console.log(tagId);
 
   // Function to check URL parameter and set the corresponding tag as selected
   const checkURLParameter = () => {
@@ -95,49 +95,53 @@ const Discover: React.FC<DiscoverProps> = () => {
     .map((tagId) => tags.find((tag) => tag.id === tagId))
     .filter((tag) => tag !== undefined) as TagType[];
 
-  const pickLanguageForm = (snippet:SnippetType): string => {
-    if (!snippet.tags || snippet.tags.length === 0) return 'markdown'
+  const pickLanguageForm = (snippet: SnippetType): string => {
+    if (!snippet.tags || snippet.tags.length === 0) return 'markdown';
     const tag = snippet.tags[0].name;
-    if (tag === 'python') return 'python'
-    if (tag === 'javascript') return 'javascript'
-    if (tag === 'c++') return 'cpp'
-    if (tag === 'java') return 'java'
-    return 'markdown'
-  }
+    if (tag === 'python') return 'python';
+    if (tag === 'javascript') return 'javascript';
+    if (tag === 'c++') return 'cpp';
+    if (tag === 'java') return 'java';
+    return 'markdown';
+  };
 
   return (
-    <div className="container mx-auto">
+    <div className="">
       <TagList tags={tags} selectedTags={selectedTags} onTagClick={handleTagClick} />
       <SelectedTags selectedTags={selectedTagObjects} />
-
-      <div>
-        <h2 className="text-2xl font-semibold mb-2">
-          Results ({filteredSnippets.length})
-        </h2>
-        
-        {filteredSnippets.length > 0 ? (
-          <ul>
-            {filteredSnippets.map((snippet) => (
-              <li key={snippet.id} className="mb-2 text-s">
-                
-                <SyntaxHighlighter language={pickLanguageForm(snippet)}>
-                    {snippet.text_content}
-                </SyntaxHighlighter>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No results found.</p>
-        )}
+      <div className="bg-green-50 py-6">
+      <div className="mx-48 mt-10 mb-24">
+      <div className="flex justify-end mt-2">
+        <span className="text-sm text-slate-500 font-semibold">Results</span>
+        <span className="text-sm text-slate-500 ml-2">({filteredSnippets.length})</span>
       </div>
-      {filteredSnippets.length === 0 && (
-        <button
-          className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 my-1 rounded"
-          onClick={handleClearFilter}
-        >
-          Clear Filter
-        </button>
-      )}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-2">
+          {filteredSnippets.length > 0 ? (
+            filteredSnippets.map((snippet) => (
+              <div key={snippet.id} className="border rounded-lg p-4 bg-gray-100">
+                <SyntaxHighlighter language={pickLanguageForm(snippet)}>
+                  {snippet.text_content}
+                </SyntaxHighlighter>
+              </div>
+            ))
+          ) : (
+            <div>
+            <p>No results found.</p>
+            {filteredSnippets.length === 0 && (
+              <button
+                className="bg-white hover:bg-green-200 text-slate-500 py-2 px-4 my-1 rounded"
+                onClick={handleClearFilter}
+              >
+                Clear Filter
+              </button>
+            )}
+            </div>
+          )}
+        </div>
+      </div>
+      
+      </div>
     </div>
   );
 };

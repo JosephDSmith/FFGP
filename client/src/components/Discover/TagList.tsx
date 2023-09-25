@@ -10,22 +10,27 @@ interface TagListProps {
 
 const TagList: React.FC<TagListProps> = ({ tags, selectedTags, onTagClick }) => {
   return (
-    <div className="mb-4 flex flex-wrap">
-      <h2 className="w-full text-2xl font-semibold mb-2">Available Tags ({tags.length})</h2>
-      <div className="w-full">
+    <div className="mx-48 mt-20">
+      {/* count of available tags */}
+      <div className="flex justify-end mt-2">
+        <span className="text-sm text-slate-500 font-semibold">Available Tags</span>
+        <span className="text-sm text-slate-500 ml-2">({tags.length})</span>
+      </div>
+
+      {/* container displaying available tags */}
+      <div className="border rounded-lg p-4 mt-2 flex justify-start gap-5">
         {tags.map((tag) => (
-          <div
-            key={tag.id}
-            className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 mb-2"
-          >
+          <div key={tag.id} className="mb-2">
             <TagButton
               tag={tag}
               selected={selectedTags.includes(tag.id)}
+              color= "blue"
               onClick={() => onTagClick(tag.id)}
             />
           </div>
         ))}
       </div>
+
     </div>
   );
 };

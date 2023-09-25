@@ -1,26 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Arrow.css'
+// import './Arrow.css';
 
-interface CounterHeaderProps {}
+interface ContributeBlurbProps {}
 
-const ContributeBlurb: React.FC<CounterHeaderProps> = () => {
+const ContributeBlurb: React.FC<ContributeBlurbProps> = () => {
   return (
-    <div className="text-center p-20 w-100% max-w-2xl m-auto">
-      <p className="text-base m-1">
-        Are you ready to make a difference? Contribute your own code snippets
-        and help shape our vibrant community. Whether you're a seasoned pro or
-        just starting, your knowledge is valuable. Share your code to inspire,
-        educate, and elevate the learning experience for all.
-      </p>
-      <br />
-      {/* arrow to contribute */}
-      <Link to="/contribute" className="contribute-link hover:text-gray-500 transition-colors duration-300">
-        contribute
-      </Link>
-      <div className="flex justify-center items-center">
-        <div className="arrow arrow-first"> </div>
-        <div className="arrow arrow-second"></div>
+    <div className="text-center p-20 px-96 bg-green-50 rounded-lg transform hover:scale-105 transition-transform duration-300">
+      <div className="p-6 text-left">
+        <p className="text-lg font-bold text-slate-600 mb-4">
+          Ready to make a difference in the coding world?
+        </p>
+        <p className="text-base text-slate-500 mb-6">
+          Join our vibrant community and contribute your code snippets.
+          Whether you're a seasoned pro or just starting, your knowledge is valuable.
+          Share your code to inspire, educate, and elevate the learning experience for everyone.
+        </p>
+        {/* Arrow to contribute */}
+        <Link
+          to="/contribute"
+          className="contribute-link inline-block px-6 py-3 rounded-full text-white bg-red-500 hover:bg-red-600 transition-colors duration-300"
+        >
+          Get Started
+        </Link>
+      </div>
+      <div className="flex justify-center items-center mt-4">
+        <div className="arrow arrow-first animate-bounce mr-2"></div>
+        <div className="arrow arrow-second animate-bounce"></div>
       </div>
     </div>
   );

@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../functionality/UserContext';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 interface UserDetailsProps {}
 
 const UserDetails: React.FC<UserDetailsProps> = () => {
   const { user } = useContext(UserContext) || { user: null };
   const [topLanguages, setTopLanguages] = useState<{ id: number; language: string; count: number }[]>([]);
+  const [contributionsCount, setContributionsCount] = useState(0);
 
   useEffect(() => {
     if (user) {
@@ -15,8 +17,12 @@ const UserDetails: React.FC<UserDetailsProps> = () => {
         .then((data) => {
           // Count occurrences of each tag's name
           const tagCounts: Record<string, { id: number; count: number }> = {};
+          let userContributions = 0; // Initialize the count of user contributions
+  
           data.forEach((snippet: any) => {
             if (snippet.user_id === user.id && snippet.tags) {
+              userContributions++; // Increment the count for each user contribution
+  
               snippet.tags.forEach((tag: any) => {
                 const tagName = tag.name;
                 if (tagName in tagCounts) {
@@ -27,20 +33,22 @@ const UserDetails: React.FC<UserDetailsProps> = () => {
               });
             }
           });
-
+  
           // Convert tagCounts object into an array of objects
           const languagesArray = Object.entries(tagCounts).map(([language, { id, count }]) => ({
             id,
             language,
             count,
           }));
-
+  
           // Sort the languages by count in descending order
           languagesArray.sort((a, b) => b.count - a.count);
-
+  
           // Get the top 3 languages
           const top3Languages = languagesArray.slice(0, 3);
-
+  
+          setContributionsCount(userContributions); // Update the contributions count
+  
           setTopLanguages(top3Languages);
         })
         .catch((error) => {
@@ -49,8 +57,20 @@ const UserDetails: React.FC<UserDetailsProps> = () => {
     }
   }, [user]);
 
+  // Animation variants for slide-in effect
+  const variants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <div className="user-details p-24 text-center bg-white m-w-m">
+    <motion.div
+      className="user-details p-24 text-center m-w-m"
+      initial="hidden"
+      animate="visible"
+      variants={variants}
+      transition={{ duration: 0.5 }}
+    >
       <img
         src={user?.picture || 'https://t.ly/JM6x_'}
         alt="User Profile"
@@ -59,27 +79,50 @@ const UserDetails: React.FC<UserDetailsProps> = () => {
       <div className="text-lg font-semibold">
         {user?.email || 'User Email'}
       </div>
-      <div className="flex justify-between max-w-sm m-auto gap-2">
-        <div className="text-sm text-gray-500 bg-gray-200 p-1 flex-1 text-left rounded-xl">
+
+      {/* display user contribution count */}
+      <motion.div
+        className="flex justify-between max-w-sm m-auto gap-2"
+        initial="hidden"
+        animate="visible"
+        variants={variants}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        <div className="text-sm text-slate-500 bg-gray-200 p-1 flex-1 text-left rounded-xl">
           Contributions:
         </div>
-        <div className="text-sm text-gray-500 bg-gray-200 p-1 flex-1 text-right rounded-xl max-w-sm">
-          10010
+        <div className="text-sm text-slate-500 bg-gray-200 p-1 flex-1 text-right rounded-xl max-w-sm">
+          {contributionsCount}
         </div>
-      </div>
-      <div className="top-languages pt-4">
-        <h2>Top Languages:</h2>
-        <ul className="flex justify-center items-center flex-wrap">
-          {topLanguages.map(({ id, language, count }) => (
-            <Link to={`/discover/${id}`} key={id}>
-              <li className="bg-gray-400 p-2 m-1 rounded-full text-center text-white w-48">
-                {language}: {count}
-              </li>
+      </motion.div>
+      {/* display top language contributions count */}
+      <motion.div
+        className="top-languages pt-4"
+        initial="hidden"
+        animate="visible"
+        variants={variants}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
+        <h2 className="mb-2">Top Languages:</h2>
+        {topLanguages.map(({ id, language, count }) => (
+          <motion.div
+            key={id}
+            className="max-w-sm m-auto mb-2"
+            initial="hidden"
+            animate="visible"
+            variants={variants}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            <Link to={`/discover/${id}`}>
+              <div className="text-sm text-gray-500 bg-gray-200 p-1 flex justify-between rounded-xl">
+                <div className="mr-2">{language}</div>
+                <div className="ml-5">{count}</div>
+              </div>
             </Link>
-          ))}
-        </ul>
-      </div>
-    </div>
+          </motion.div>
+        ))}
+      </motion.div>
+    </motion.div>
   );
 };
 

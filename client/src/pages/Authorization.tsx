@@ -54,9 +54,9 @@ const Authorization = () => {
   }, [popup]);
 
   return (
-    <div className="authorization flex flex-col items-center justify-center mt-16">
-      <img src="https://i.ibb.co/WKs7pwz/programmershomepage.png" alt="programmers collaborating"/>
-      <div className="mt-4">
+    <div className="authorization flex flex-col items-center justify-center mt-20">
+      <img src="/assets/graphics/programmershomepage.png" alt="programmers collaborating"/>
+      <div className=" z-0">
         <AuthCard onGoogleLogin={handleGoogleLogin} />
       </div>
     </div>

@@ -4,13 +4,17 @@ import { TagType } from '../../functionality/types';
 interface TagButtonProps {
   tag: TagType;
   selected: boolean;
+  color: string;
   onClick: () => void;
 }
 
-const TagButton: React.FC<TagButtonProps> = ({ tag, selected, onClick }) => {
+const TagButton: React.FC<TagButtonProps> = ({ tag, selected, onClick, color }) => {
+  const bgColor = `bg-${color}-400`;
+  const hoverColor = `bg-${color}-500`;
+
   return (
     <button
-      className={"bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 my-1 rounded"}
+      className={`${bgColor} hover:${hoverColor} text-white py-2 px-4 my-1 rounded`}
       onClick={onClick}
     >
       {tag.name}
