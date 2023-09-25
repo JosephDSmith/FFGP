@@ -2,10 +2,26 @@
 @tailwind components;
 @tailwind utilities; 
 
-body{
+/* body{
     background-color: rgb(242, 242, 242);
-}
+} */
 
 span {
     display: none
 }
+
+.text-custom-red {
+    color: #F66F6F;
+  }
+  
+  .text-custom-light-blue {
+    color: #D1E1DC;
+  }
+  
+  .text-custom-blue {
+    color: #5076C6;
+  }
+  
+  .text-custom-white {
+    color: #FFFFFF;
+  }

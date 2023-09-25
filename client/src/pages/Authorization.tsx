@@ -1,14 +1,14 @@
-import {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../functionality/UserContext';
 import AuthCard from '../components/Authorization/AuthCard';
-import HalfCircle from '../components/Authorization/HalfCircle';
 
+const PROGRAMMERCOLLAB = "https://i.ibb.co/3T3xGQ4/Programmers-Collaborating.png";
 
 const Authorization = () => {
   const nav = useNavigate();
-  const [popup, setPopup] = useState<Window|null>(null);
+  const [popup, setPopup] = useState<Window | null>(null);
   const { user, setUser } = useContext(UserContext)!;
 
   const handleGoogleLogin = () => {
@@ -17,18 +17,18 @@ const Authorization = () => {
     const left = window.screenX + (window.outerWidth - width) / 2;
     const top = window.screenY + (window.outerHeight - height) / 2.5;
     const title = 'Login with Google';
-    const url = '/google'
+    const url = '/google';
     window.open(url, title, `width=${width},height=${height},left=${left},top=${top}`);
     setPopup(popup);
   };
 
   useEffect(() => {
     // Add the message listener
-    const messageEventListener = (event:MessageEvent) => {
+    const messageEventListener = (event: MessageEvent) => {
       console.log(event.data.user);
-      if (event.data.url && event.data.url.match('/google/auth')) {   
+      if (event.data.url && event.data.url.match('/google/auth')) {
         setUser(event.data);
-        nav('/home')
+        nav('/home');
       }
     };
 
@@ -39,16 +39,16 @@ const Authorization = () => {
     };
   }, []);
 
-  //clears popup once user logs in
+  // Clears popup once user logs in
   useEffect(() => {
     const popupCloseListener = () => {
-      setPopup(null); 
+      setPopup(null);
     };
-  
+
     if (popup) {
       popup.addEventListener('beforeunload', popupCloseListener);
     }
-  
+
     return () => {
       if (popup) {
         popup.removeEventListener('beforeunload', popupCloseListener);
@@ -56,16 +56,10 @@ const Authorization = () => {
     };
   }, [popup]);
 
-  // const handleLogout = () => {
-  //   // clear auth token 
-  //   setUser(null)
-  //   nav('/login'); // Replace '/login' with the appropriate URL
-  // };
-
   return (
-    <div className="authorization flex">
-      <HalfCircle />
-      <div className="flex-1 flex justify-center items-center" style={{ marginLeft: '700px', marginTop: '100px' }}>
+    <div className="authorization flex flex-col items-center justify-center mt-16">
+      <img src="https://i.ibb.co/WKs7pwz/programmershomepage.png" alt="programmers collaborating"/>
+      <div className="mt-4">
         <AuthCard onGoogleLogin={handleGoogleLogin} />
       </div>
     </div>
