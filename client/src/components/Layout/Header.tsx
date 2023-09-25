@@ -16,7 +16,7 @@ const Header: React.FC = () => {
         <Link to={user ? '/home' : '/'} className="hover:text-blue-500">
           <div className='flex items-center text-black mr-5'>
             Snippets 	&lt;            
-            <img alt='logo' className='w-10' src='/snippets_logo_small.png' />
+            <img alt='logo' className='w-10' src='/assets/logo/snippets_logo_small.png' />
             /	&gt;
             </div>
         </Link>
