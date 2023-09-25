@@ -21,7 +21,7 @@ export default function App() {
         <Header />
         {user && <UserSidebar user={user}/>}
         {!user && <div className="mt-20"></div>}
-        <div className="mt-30">
+        <div className="mt-30 p-20">
           <Routes>
             <Route path="/" element={<Authorization />} />
             <Route path="/home" element={<Home />} />

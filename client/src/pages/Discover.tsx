@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { TagType, SnippetType } from '../functionality/types';
 import TagList from '../components/Discover/TagList';
 import SelectedTags from '../components/Discover/SelectedTags';
+import SyntaxHighlighter from 'react-syntax-highlighter';
 
 interface DiscoverProps {
   // Define any props you need here
@@ -94,8 +95,18 @@ const Discover: React.FC<DiscoverProps> = () => {
     .map((tagId) => tags.find((tag) => tag.id === tagId))
     .filter((tag) => tag !== undefined) as TagType[];
 
+  const pickLanguageForm = (snippet:SnippetType): string => {
+    if (!snippet.tags || snippet.tags.length === 0) return 'markdown'
+    const tag = snippet.tags[0].name;
+    if (tag === 'python') return 'python'
+    if (tag === 'javascript') return 'javascript'
+    if (tag === 'c++') return 'cpp'
+    if (tag === 'java') return 'java'
+    return 'markdown'
+  }
+
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto">
       <TagList tags={tags} selectedTags={selectedTags} onTagClick={handleTagClick} />
       <SelectedTags selectedTags={selectedTagObjects} />
 
@@ -103,11 +114,15 @@ const Discover: React.FC<DiscoverProps> = () => {
         <h2 className="text-2xl font-semibold mb-2">
           Results ({filteredSnippets.length})
         </h2>
+        
         {filteredSnippets.length > 0 ? (
           <ul>
             {filteredSnippets.map((snippet) => (
-              <li key={snippet.id} className="mb-2">
-                {snippet.text_content}
+              <li key={snippet.id} className="mb-2 text-s">
+                
+                <SyntaxHighlighter language={pickLanguageForm(snippet)}>
+                    {snippet.text_content}
+                </SyntaxHighlighter>
               </li>
             ))}
           </ul>
