@@ -25,7 +25,7 @@ const Contribute: React.FC<ContributeProps> = () => {
     fetchTags();
   }, []);
 
-  const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTextContent(event.target.value);
   };
 
@@ -67,6 +67,7 @@ const Contribute: React.FC<ContributeProps> = () => {
     })
       .then(r => r.json())
       .then(d => console.log(d))
+      .then(() => alert('Success!'))
 
     setTextContent("");
     setSelectedTags([]);
@@ -87,13 +88,15 @@ const Contribute: React.FC<ContributeProps> = () => {
         <div className='mx-auto  max-w-2xl p-10'>
           <div className="flex-row  text-center">
             <div className="text-xl m-5"> Contribute a snippet</div>
-            <input
-              type="text"
+            <textarea
+              cols={60}
+              rows={8}
               placeholder='Snippet text here'
               value={textContent}
               onChange={handleTextChange}
-              className="rounded-lg border-2 border-gray-300 text-center m-5  w-full h-20"
+              className="rounded-lg border-2 border-gray-300 p-5 m-5  w-full h-20"
             />
+
             <TagList tags={tags} selectedTags={selectedTags} onTagClick={handleTagSelect} />
             <SelectedTags selectedTags={selectedTagObjects} />
             <div className='m-5'>
