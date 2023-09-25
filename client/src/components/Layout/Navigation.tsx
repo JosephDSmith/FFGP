@@ -27,9 +27,9 @@ const Navigation: React.FC<NavigationProps> = () => {
     <div className="navigation text-center p-3 bg-white">
       <div className="flex justify-center">
         <div className="sm:hidden space-x-2 flex">
-        <Link to="/home">
+        {/* <Link to="/home">
             <img src="/home.png" alt="Home Icon" className="w-20 h-20"/>
-          </Link>
+          </Link> */}
           <Link to="/languages">
             <img src="/languages.png" alt="Languages Icon" className="w-20 h-20"/>
           </Link>

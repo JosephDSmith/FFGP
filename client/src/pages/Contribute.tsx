@@ -84,47 +84,49 @@ const Contribute: React.FC<ContributeProps> = () => {
         your expertise, insights, and solutions with others by uploading your own
         contributions.
       </div>
-      <div className='bg-white mb-20'>
-        <div className='mx-auto  max-w-2xl p-10'>
-          <div className="flex-row  text-center">
-            <div className="text-xl m-5"> Contribute a snippet</div>
-            <textarea
-              cols={60}
-              rows={8}
-              placeholder='Snippet text here'
-              value={textContent}
-              onChange={handleTextChange}
-              className="rounded-lg border-2 border-gray-300 p-5 m-5  w-full h-20"
-            />
+      <div className="bg-white mb-20">
+  <div className="mx-auto p-5 sm:p-10">
+    <div className="flex-row text-center">
+      <div className="text-xl m-5">Contribute a snippet</div>
+      <textarea
+        cols={60}
+        rows={8}
+        placeholder="Snippet text here"
+        value={textContent}
+        onChange={handleTextChange}
+        className="rounded-lg border-2 border-gray-300 p-5 m-5 w-full md:cols-80 md:rows-10"
+      />
 
-            <TagList tags={tags} selectedTags={selectedTags} onTagClick={handleTagSelect} />
-            <SelectedTags selectedTags={selectedTagObjects} />
-            <div className='m-5'>
-              <input
-                type="text"
-                placeholder="Enter a new tag"
-                value={newTag}
-                onChange={handleTagChange}
-                className='p-2 mr-5 rounded-lg border-2 border-gray-200 text-center'
-              />
-              <button
-                onClick={handleTagSubmit}
-                className='rounded-lg bg-blue-200 p-2 hover:bg-blue-400 '
-              >
-                Add Tag
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="text-center pb-10">
-          <button
-            className='rounded-md bg-blue-200 p-5 text-center'
-            onClick={handleSubmit}
-          >
-            Submit Snippet with Tag
-          </button>
-        </div>
+      <TagList tags={tags} selectedTags={selectedTags} onTagClick={handleTagSelect} />
+        
+      <SelectedTags selectedTags={selectedTagObjects} />
+      <div className="m-5">
+        <input
+          type="text"
+          placeholder="Enter a new tag"
+          value={newTag}
+          onChange={handleTagChange}
+          className="p-2 mr-5 rounded-lg border-2 border-gray-200 text-center w-full"
+        />
+        <button
+          onClick={handleTagSubmit}
+          className="rounded-lg bg-blue-200 p-2 hover:bg-blue-400"
+        >
+          Add Tag
+        </button>
       </div>
+    </div>
+  </div>
+  <div className="text-center pb-10">
+    <button
+      className="rounded-md bg-blue-200 p-5 text-center"
+      onClick={handleSubmit}
+    >
+      Submit Snippet with Tag
+    </button>
+  </div>
+</div>
+
     </div>
   );
 };
