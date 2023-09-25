@@ -11,6 +11,8 @@ interface UserSidebarProps {
 const UserSidebar: React.FC<UserSidebarProps> = ({ user, logout }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  console.log(user)
+
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };
