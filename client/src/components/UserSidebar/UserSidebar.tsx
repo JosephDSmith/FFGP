@@ -5,11 +5,11 @@ import ToggleIcon from './ToggleIcon';
 
 interface UserSidebarProps {
   user: UserType | null;
+  logout: () => void
 }
 
-const UserSidebar: React.FC<UserSidebarProps> = ({ user }) => {
+const UserSidebar: React.FC<UserSidebarProps> = ({ user, logout }) => {
   const [isOpen, setIsOpen] = useState(false);
-  // const { logout } = useContext(UserContext);
 
   const togglePopup = () => {
     setIsOpen(!isOpen);
@@ -19,7 +19,9 @@ const UserSidebar: React.FC<UserSidebarProps> = ({ user }) => {
     fetch("/clear")
     .then(r => {
       if(r.ok){
+        logout();
         togglePopup(); 
+
       }})
     
 

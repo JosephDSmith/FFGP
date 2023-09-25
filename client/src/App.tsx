@@ -13,13 +13,13 @@ import './App.css'
 import UserContributions from './pages/UserContributions';
 
 export default function App() {
-  const { user } = useContext(UserContext) || { user: null }; 
+  const { user, logout } = useContext(UserContext) || { user: null }; 
   
   return (
     <div className="App">
       <Router>
         <Header />
-        {user && <UserSidebar user={user}/>}
+        {user && <UserSidebar user={user} logout={logout}/>}
         {!user && <div className="mt-20"></div>}
         <div className="mt-30 p-20">
           <Routes>
