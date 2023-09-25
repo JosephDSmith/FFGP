@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import TagList from '../components/Discover/TagList';
 import SelectedTags from '../components/Discover/SelectedTags';
 import { TagType } from '../functionality/types';
+import { useNavigate } from 'react-router-dom';
 
 interface ContributeProps { }
 
@@ -10,6 +11,8 @@ const Contribute: React.FC<ContributeProps> = () => {
   const [tags, setTags] = useState<TagType[]>([]);
   const [selectedTags, setSelectedTags] = useState<number[]>([]);
   const [newTag, setNewTag] = useState<string>("");
+  const [isAddingTag, setIsAddingTag] = useState<boolean>(false); // State to control visibility
+  const nav = useNavigate();
 
   useEffect(() => {
     const fetchTags = async () => {
@@ -47,6 +50,7 @@ const Contribute: React.FC<ContributeProps> = () => {
           setTags([...tags, d]);
           setSelectedTags([...selectedTags, d.id]);
           setNewTag("");
+          setIsAddingTag(false); // Hide the input and "Add Tag" button after submission
         })
     }
   };
@@ -79,54 +83,81 @@ const Contribute: React.FC<ContributeProps> = () => {
 
   return (
     <div>
-      <div className='mx-auto max-w-2xl p-10'>
-        We invite you to become a valued contributor to our growing community. Share
-        your expertise, insights, and solutions with others by uploading your own
-        contributions.
-      </div>
-      <div className="bg-white mb-20">
-  <div className="mx-auto p-5 sm:p-10">
-    <div className="flex-row text-center">
-      <div className="text-xl m-5">Contribute a snippet</div>
-      <textarea
-        cols={60}
-        rows={8}
-        placeholder="Snippet text here"
-        value={textContent}
-        onChange={handleTextChange}
-        className="rounded-lg border-2 border-gray-300 p-5 m-5 w-full md:cols-80 md:rows-10"
-      />
-
-      <TagList tags={tags} selectedTags={selectedTags} onTagClick={handleTagSelect} />
+      <div className='languages'>
+        <div className="bg-green-50 py-16">
+          <div className="mx-auto text-center max-w-2xl">
+            <p className="pt-4 text-base text-slate-500">
+              We invite you to become a valued contributor to our growing community. Share
+              your expertise, insights, and solutions with others by uploading your own
+              contributions.
+            </p>
+            
+          </div>
+        </div>
         
-      <SelectedTags selectedTags={selectedTagObjects} />
-      <div className="m-5">
-        <input
-          type="text"
-          placeholder="Enter a new tag"
-          value={newTag}
-          onChange={handleTagChange}
-          className="p-2 mr-5 rounded-lg border-2 border-gray-200 text-center w-full"
-        />
-        <button
-          onClick={handleTagSubmit}
-          className="rounded-lg bg-blue-200 p-2 hover:bg-blue-400"
-        >
-          Add Tag
-        </button>
-      </div>
-    </div>
-  </div>
-  <div className="text-center pb-10">
-    <button
-      className="rounded-md bg-blue-200 p-5 text-center"
-      onClick={handleSubmit}
-    >
-      Submit Snippet with Tag
-    </button>
-  </div>
-</div>
+        <div className="bg-white mb-20">
+          <TagList tags={tags} selectedTags={selectedTags} onTagClick={handleTagSelect} />
+            
+          <SelectedTags selectedTags={selectedTagObjects} />
+          <div className="text-center">
+            <div className="mx-48 my-20">
+            <textarea
+              cols={60}
+              rows={8}
+              placeholder="Snippet text here"
+              value={textContent}
+              onChange={handleTextChange}
+              className="rounded-lg border-2 border-gray-300 p-6 w-full"
+            />
+            </div>
 
+            <div className="mt-8 flex justify-center mb-10">
+              <button
+                onClick={handleSubmit}
+                className="text-lg rounded-full px-8 py-4 bg-green-200 hover:bg-red-200 text-slate-500 transition-colors duration-300"
+              >
+                Submit Snippet
+              </button>
+            </div>
+
+            {/* new tag section */}
+            <div className="bg-green-50 py-10">
+              <h1>Can't find the tag you're looking for? </h1> 
+              {isAddingTag ? (
+                <div className="mx-48">
+                  <input
+                    type="text"
+                    placeholder="Enter a new tag"
+                    value={newTag}
+                    onChange={handleTagChange}
+                    className="p-2 mb-10 mr-5 rounded-lg border-2 border-gray-200 text-center w-full"
+                  />
+                  <button
+                    onClick={handleTagSubmit}
+                    className="rounded-lg bg-green-200 p-2 hover:bg-red-200 text-slate-500"
+                  >
+                    Add Tag
+                  </button>
+                  <br/><br/>
+                  <button
+                    onClick={() => setIsAddingTag(false)}
+                    className="bg-red-400 rounded-full px-2 my-2 hover:bg-red-500"
+                  >
+                    -
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => setIsAddingTag(true)} 
+                  className="bg-green-300 rounded-full px-2 my-2"
+                >
+                  +
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

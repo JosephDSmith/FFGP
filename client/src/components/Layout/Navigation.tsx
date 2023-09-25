@@ -15,7 +15,7 @@ const NavLink: React.FC<{ to: string; children: string }> = ({
 }) => (
   <Link
     to={to}
-    className="text-black text-l hover:text-blue-500 transition-colors duration-300"
+    className="text-black text-l hover:text-red-400 transition-colors duration-300"
   >
     {children}
   </Link>
@@ -30,14 +30,17 @@ const Navigation: React.FC<NavigationProps> = () => {
         {/* <Link to="/home">
             <img src="/home.png" alt="Home Icon" className="w-20 h-20"/>
           </Link> */}
+          <Link to="/home">
+            <img src="/assets/icons/home.png" alt="Languages Icon" className="w-20 h-20"/>
+          </Link>
           <Link to="/languages">
-            <img src="/languages.png" alt="Languages Icon" className="w-20 h-20"/>
+            <img src="/assets/icons/languages.png" alt="Languages Icon" className="w-20 h-20"/>
           </Link>
           <Link to="/discover">
-            <img src="/discover.png" alt="Discover Icon" className="w-20 h-20"/>
+            <img src="/assets/icons/discover.png" alt="Discover Icon" className="w-20 h-20"/>
           </Link>
           <Link to="/contribute">
-            <img src="/contribute.png" alt="Contribute Icon" className="w-20 h-20"/>
+            <img src="/assets/icons/contribute.png" alt="Contribute Icon" className="w-20 h-20"/>
           </Link>
         </div>
         <div className="hidden sm:flex space-x-20">

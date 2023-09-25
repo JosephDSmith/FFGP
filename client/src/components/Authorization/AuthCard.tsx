@@ -10,11 +10,11 @@ interface AuthCardProps {
 const AuthCard: FC<AuthCardProps> = ({ onGoogleLogin }) => {
   return (
     <div className="flex justify-center items-center mt-5">
-      <div className="bg-white rounded-lg shadow-md p-10 w-full max-w-md text-center" style={{ position: 'relative', zIndex: '49' }}>
+      <div className="rounded-lg shadow-md p-10 w-full max-w-md text-center relative z-30 bg-green-50 ">
         <WelcomeMessage />
         <Button onClick={onGoogleLogin}>
           <Image
-            src="https://i.ibb.co/615VxNj/google-logo.png"
+            src="/assets/logo/google-logo.png"
             alt="Google Logo"
           />
           Login with Google

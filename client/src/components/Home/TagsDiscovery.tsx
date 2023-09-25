@@ -39,10 +39,10 @@ const TagsDiscovery: React.FC<TagsDiscoveryProps> = () => {
   }
 
   return (
-    <div className="text-center bg-white p-20 w-full">
+    <div className="text-center bg-white p-20 w-full text-slate-500">
       <p className="text-base">
-        Dive into the world of coding and explore new programming languages. Our platform is a hub for not only finding
-        solutions but also for broadening your coding horizons. Discover exciting languages, techniques, and approaches
+        Dive into the world of coding and explore new programming languages. <br/> Our platform is a hub for not only finding
+        solutions but also for broadening your coding horizons.  <br/>Discover exciting languages, techniques, and approaches
         you might not have encountered otherwise. <br />
         <br />
         Click on one of the tags below to find out more!
@@ -55,14 +55,14 @@ const TagsDiscovery: React.FC<TagsDiscoveryProps> = () => {
             <Link
               key={index}
               to={`/discover/${tag.id}`}
-              className="bg-gray-400 p-2 m-1 rounded-full text-center text-white"
+              className="bg-blue-500 hover:bg-blue-700 p-2 m-1 rounded-full text-center text-white hover:text-gray-100 transition-colors duration-300"
               style={{ minWidth: '100px' }}
             >
               {tag.name}
             </Link>
           ))}
         </div>
-      )}
+      )} <br/> <br/>
     </div>
   );
 };

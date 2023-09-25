@@ -15,9 +15,8 @@ const Header: React.FC = () => {
       <div className="text-black flex justify-end"> 
         <Link to={user ? '/home' : '/'} className="hover:text-blue-500">
           <div className='flex items-center text-black mr-5'>
-            Snippets 	&lt;            
-            <img alt='logo' className='w-10' src='/snippets_logo_small.png' />
-            /	&gt;
+          CodeWhisker         
+            <img alt='logo' className='w-10' src='/assets/logo/snippets_logo_small.png' />
             </div>
         </Link>
     </div>
