@@ -13,25 +13,29 @@ export function UserProvider({ children }: { children: ReactNode }) {
       // Set the mock user only in development mode
       setUser(mockUser);
     }else{
-    // Checks if user session exists if not in dev mode
-    fetch('/api/authorized')
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          setUser(null)
-        }
-      })
-      .then((data: UserType) => {
-        setUser(data) 
-      })
-      .catch(error => {
-        console.error("Error fetching user:", error)
-        setUser(null)
-      })
+      login()
     }
   }, [])
 
+  // Function to login
+  const login = () => {
+     // Checks if user session exists if not in dev mode
+     fetch('/api/authorized')
+     .then(res => {
+       if (res.ok) {
+         return res.json()
+       } else {
+         setUser(null)
+       }
+     })
+     .then((data: UserType) => {
+       setUser(data) 
+     })
+     .catch(error => {
+       console.error("Error fetching user:", error)
+       setUser(null)
+     })
+  }
 
   // Function to handle logout
   const logout = () => {
@@ -43,7 +47,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, setUser, logout }}>
+    <UserContext.Provider value={{ user, setUser, logout, login}}>
       {children}
     </UserContext.Provider>
   );
