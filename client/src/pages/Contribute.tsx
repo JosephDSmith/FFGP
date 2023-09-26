@@ -86,7 +86,7 @@ const Contribute: React.FC<ContributeProps> = () => {
       <div className='languages'>
         <div className="bg-green-50 py-16">
           <div className="mx-auto text-center max-w-2xl">
-            <p className="pt-4 text-base text-slate-500">
+            <p className="pt-4 text-base text-slate-500 md: ml-5 mr-5">
               We invite you to become a valued contributor to our growing community. Share
               your expertise, insights, and solutions with others by uploading your own
               contributions.
@@ -100,7 +100,7 @@ const Contribute: React.FC<ContributeProps> = () => {
             
           <SelectedTags selectedTags={selectedTagObjects} />
           <div className="text-center">
-            <div className="mx-48 my-20">
+            <div className="mx-48 my-20 md: ml-10 mr-10">
             <textarea
               cols={60}
               rows={8}
@@ -124,7 +124,7 @@ const Contribute: React.FC<ContributeProps> = () => {
             <div className="bg-green-50 py-10">
               <h1>Can't find the tag you're looking for? </h1> 
               {isAddingTag ? (
-                <div className="mx-48">
+                <div className="mx-48 md: ml-20 mr-20">
                   <input
                     type="text"
                     placeholder="Enter a new tag"

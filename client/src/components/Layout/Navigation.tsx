@@ -27,9 +27,6 @@ const Navigation: React.FC<NavigationProps> = () => {
     <div className="navigation text-center p-3 bg-white">
       <div className="flex justify-center">
         <div className="sm:hidden space-x-2 flex">
-        {/* <Link to="/home">
-            <img src="/home.png" alt="Home Icon" className="w-20 h-20"/>
-          </Link> */}
           <Link to="/home">
             <img src="/assets/icons/home.png" alt="Languages Icon" className="w-20 h-20"/>
           </Link>
@@ -44,6 +41,7 @@ const Navigation: React.FC<NavigationProps> = () => {
           </Link>
         </div>
         <div className="hidden sm:flex space-x-20">
+          <NavLink to="/home">home</NavLink>
           <NavLink to="/languages">languages</NavLink>
           <NavLink to="/discover">discover</NavLink>
           {user && <NavLink to="/contribute">contribute</NavLink>}
