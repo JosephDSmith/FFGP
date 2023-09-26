@@ -6,8 +6,8 @@ interface ContributeBlurbProps {}
 
 const ContributeBlurb: React.FC<ContributeBlurbProps> = () => {
   return (
-    <div className="text-center p-20 px-96 bg-green-50 rounded-lg">
-      <div className="p-6 text-left">
+    <div className="text-center p-4 sm:p-8 md:p-12 lg:p-20 bg-green-50 rounded-lg">
+      <div className="p-4 sm:p-6 md:p-8 lg:p-12">
         <p className="text-lg font-bold text-slate-600 mb-4">
           Ready to make a difference in the coding world?
         </p>
