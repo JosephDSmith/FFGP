@@ -10,7 +10,7 @@ interface TagListProps {
 
 const TagList: React.FC<TagListProps> = ({ tags, selectedTags, onTagClick }) => {
   return (
-    <div className="mx-48 mt-20">
+    <div className="mx-48 mt-20 md: ml-10 mr-10">
       {/* count of available tags */}
       <div className="flex justify-end mt-2">
         <span className="text-sm text-slate-500 font-semibold">Available Tags</span>

@@ -8,7 +8,7 @@ interface SelectedTagsProps {
 
 const SelectedTags: React.FC<SelectedTagsProps> = ({ selectedTags }) => {
   return (
-    <div className="mx-48 my-10">
+    <div className="mx-48 my-10 md: ml-10 mr-10">
       <div className="flex justify-end mt-2">
         <span className="text-sm text-slate-500 font-semibold">Selected Tags</span>
         <span className="text-sm text-slate-500 ml-2">({selectedTags.length})</span>
