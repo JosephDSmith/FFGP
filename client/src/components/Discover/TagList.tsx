@@ -18,7 +18,7 @@ const TagList: React.FC<TagListProps> = ({ tags, selectedTags, onTagClick }) => 
       </div>
 
       {/* container displaying available tags */}
-      <div className="border rounded-lg p-4 mt-2 flex justify-start gap-5">
+      <div className="border rounded-lg p-2 flex flex-wrap justify-start gap-1">
         {tags.map((tag) => (
           <div key={tag.id} className="mb-2">
             <TagButton
