@@ -110,16 +110,16 @@ const Discover: React.FC<DiscoverProps> = () => {
       <TagList tags={tags} selectedTags={selectedTags} onTagClick={handleTagClick} />
       <SelectedTags selectedTags={selectedTagObjects} />
       <div className="bg-green-50 py-6">
-      <div className="mx-48 mt-10 mb-24">
+      <div className="mx-auto px-10 mt-10 mb-24">
       <div className="flex justify-end mt-2">
         <span className="text-sm text-slate-500 font-semibold">Results</span>
         <span className="text-sm text-slate-500 ml-2">({filteredSnippets.length})</span>
       </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-2">
           {filteredSnippets.length > 0 ? (
             filteredSnippets.map((snippet) => (
-              <div key={snippet.id} className="border rounded-lg p-4 bg-gray-100 sm:w-full md:w-1/2 lg:w-full xl:w-1/3">
+              <div key={snippet.id} className="border rounded-lg p-4 bg-gray-100 text-sm">
                 <SyntaxHighlighter language={pickLanguageForm(snippet)}>
                   {snippet.text_content}
                 </SyntaxHighlighter>
