@@ -30,8 +30,9 @@ def check_auth():
     snippet_count = len(user.snippets)
 
     return jsonify({
-      'email': session['email'], 
-      'picture': session['picture'],
+      'id': user.id,
+      'email': user.email, 
+      'picture': user.picture,
       'snippet_count': snippet_count}), 200
   else:
     return jsonify({"error": "unauthorized"}), 401
