@@ -108,7 +108,7 @@ const Discover: React.FC<DiscoverProps> = () => {
   return (
     <div className="">
       <TagList tags={tags} selectedTags={selectedTags} onTagClick={handleTagClick} />
-      <SelectedTags selectedTags={selectedTagObjects} />
+      <SelectedTags selectedTags={selectedTagObjects} onTagClick={() => null} />
       <div className="bg-green-50 py-6">
       <div className="mx-auto px-10 mt-10 mb-24">
       <div className="flex justify-end mt-2">
