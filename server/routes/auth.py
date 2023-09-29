@@ -26,7 +26,13 @@ oauth.register(
 @app.route('/api/authorized')
 def check_auth():
   if session.get('email'):
-    return jsonify({'email': session['email'], 'picture': session['picture']}), 200
+    user = User.query.filter_by(email = session.get('email')).first()
+    snippet_count = len(user.snippets)
+
+    return jsonify({
+      'email': session['email'], 
+      'picture': session['picture'],
+      'snippet_count': snippet_count}), 200
   else:
     return jsonify({"error": "unauthorized"}), 401
 
