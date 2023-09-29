@@ -56,8 +56,13 @@ const Contribute: React.FC<ContributeProps> = () => {
   };
 
   const handleTagSelect = (selectedTag: number) => {
+    if (selectedTags.indexOf(selectedTag) > -1) return;
     setSelectedTags(selectedTags => [...selectedTags, selectedTag]);
   };
+
+  const handleTagDeselect = (deselectedTag: number) => {
+    setSelectedTags(selectedTags => selectedTags.filter(t => t !== deselectedTag));
+  }
 
   const handleSubmit = () => {
     console.log(textContent, selectedTags);
@@ -98,7 +103,7 @@ const Contribute: React.FC<ContributeProps> = () => {
         <div className="bg-white mb-20">
           <TagList tags={tags} selectedTags={selectedTags} onTagClick={handleTagSelect} />
             
-          <SelectedTags selectedTags={selectedTagObjects} />
+          <SelectedTags selectedTags={selectedTagObjects} onTagClick={handleTagDeselect} />
           <div className="text-center">
             <div className="mx-48 my-20 md: ml-10 mr-10">
             <textarea

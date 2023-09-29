@@ -4,9 +4,10 @@ import TagButton from './TagButton';
 
 interface SelectedTagsProps {
   selectedTags: TagType[];
+  onTagClick: (deselectedTag: number) => void;
 }
 
-const SelectedTags: React.FC<SelectedTagsProps> = ({ selectedTags }) => {
+const SelectedTags: React.FC<SelectedTagsProps> = ({ selectedTags, onTagClick}) => {
   return (
     <div className="mx-48 my-10 md: ml-10 mr-10">
       <div className="flex flex-wrap justify-end mt-2">
@@ -22,7 +23,7 @@ const SelectedTags: React.FC<SelectedTagsProps> = ({ selectedTags }) => {
               selected={true}
               color="red"
               onClick={() => {
-                // Handle click action if needed
+                onTagClick(tag.id)
               }}
             />
           </div>
