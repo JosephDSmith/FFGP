@@ -4,6 +4,7 @@ export interface UserType {
   is_admin: boolean;
   picture?: string;
   snippets?: string[];
+  snippet_count?: number;
 }
 
 export interface UserContextType {

@@ -8,7 +8,6 @@ interface UserDetailsProps {}
 const UserDetails: React.FC<UserDetailsProps> = () => {
   const { user } = useContext(UserContext) || { user: null };
   const [topLanguages, setTopLanguages] = useState<{ id: number; language: string; count: number }[]>([]);
-  const [contributionsCount, setContributionsCount] = useState(0);
 
   useEffect(() => {
     if (user) {
@@ -46,9 +45,7 @@ const UserDetails: React.FC<UserDetailsProps> = () => {
   
           // Get the top 3 languages
           const top3Languages = languagesArray.slice(0, 3);
-  
-          setContributionsCount(userContributions); // Update the contributions count
-  
+    
           setTopLanguages(top3Languages);
         })
         .catch((error) => {
@@ -92,7 +89,7 @@ const UserDetails: React.FC<UserDetailsProps> = () => {
           Contributions:
         </div>
         <div className="text-sm text-slate-500 bg-gray-200 p-1 flex-1 text-right rounded-xl max-w-sm">
-          {contributionsCount}
+          {user?.snippet_count}
         </div>
       </motion.div>
       {/* display top language contributions count */}
