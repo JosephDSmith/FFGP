@@ -14,7 +14,7 @@ const CounterHeader: React.FC<CounterHeaderProps> = ({ count }) => {
         Thanks to your dedication, we've amassed a collection of
       </p>
       
-      <h2 className="text-3xl text-slate-500"><CountUp end={count} duration={2} separator="," /> snippets and counting!</h2>
+      <h2 className="text-3xl text-blue-300"><CountUp end={count} duration={2} separator="," /> snippets and counting!</h2>
         
 
     </div>
