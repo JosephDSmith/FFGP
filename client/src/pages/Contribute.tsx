@@ -84,7 +84,6 @@ const Contribute: React.FC<ContributeProps> = () => {
         console.error('Error submitting snippet:', error);
         alert('An error occurred while submitting the snippet.');
       });
-  
     setTextContent("");
     setSelectedTags([]);
   };
@@ -92,28 +91,29 @@ const Contribute: React.FC<ContributeProps> = () => {
   const selectedTagObjects = selectedTags
     .map((tagId) => tags.find((tag) => tag.id === tagId))
     .filter((tag) => tag !== undefined) as TagType[];
-if (contribution) {
-  return (
-    <div className="min-h-screen bg-green-50 flex items-center justify-center text-slate-500">
-      <div className="text-center">
-        <div className="text-2xl font-bold mb-4">Thank you for your contribution!</div>
-        <div className="mb-4">
-          <b>Text Content:</b> {contribution.text_content}
-        </div>
-        {contribution.tags && contribution.tags.length > 0 && (
-          <div className="mb-2">
-            <b>Tags:</b> {contribution.tags.map((tag, index) => (
-              <span key={tag.id}>
-                {index > 0 && ', '}
-                {tag.name}
-              </span>
-            ))}
+
+  if (contribution) {
+    return (
+      <div className="min-h-screen bg-green-50 flex items-center justify-center text-slate-500">
+        <div className="text-center">
+          <div className="text-2xl font-bold mb-4">Thank you for your contribution!</div>
+          <div className="mb-4">
+            <b>Text Content:</b> {contribution.text_content}
           </div>
-        )}
+          {contribution.tags && contribution.tags.length > 0 && (
+            <div className="mb-2">
+              <b>Tags:</b> {contribution.tags.map((tag, index) => (
+                <span key={tag.id}>
+                  {index > 0 && ', '}
+                  {tag.name}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
   return (
     <div>
       <div className='languages'>
