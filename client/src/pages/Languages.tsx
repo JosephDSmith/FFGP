@@ -18,7 +18,7 @@ const Languages: React.FC<LanguagesProps> = () => {
     <div className="languages">
 
       {/* Section 1: Introduction */}
-      <div className="bg-gray-100 py-16">
+      <div className="bg-gray-100 py-16 p-4">
         <div className="mx-auto text-center max-w-2xl">
           <p className="pt-4 text-base text-slate-500">
             We've gathered an extensive list of programming languages to cater to developers, learners,
@@ -37,7 +37,7 @@ const Languages: React.FC<LanguagesProps> = () => {
       </div>
 
       {/* Section 2: Tags */}
-      <div className="bg-white py-16">
+      <div className="bg-white py-16 p-4 pb-32">
         <div className="mx-auto text-center max-w-2xl">
           <h2 className="text-3xl text-slate-500">Dive Deeper into Specific Languages</h2>
           <p className="mt-4 text-base text-slate-500">
