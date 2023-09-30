@@ -39,7 +39,7 @@ const TagsDiscovery: React.FC<TagsDiscoveryProps> = () => {
   }
 
   return (
-    <div className="text-center bg-white p-20 w-full text-slate-500">
+    <div className="text-center bg-white p-8 md:p-20 lg:p-20 pb-0 md:pb-0 lg:pb-0 w-full text-slate-500">
       <p className="text-base">
       <h2 className="text-3xl text-slate-500 pb-8">Dive into the world of coding and explore new programming languages.</h2>
         Our platform is a hub for not only finding

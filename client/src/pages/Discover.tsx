@@ -4,6 +4,8 @@ import { TagType, SnippetType } from '../functionality/types';
 import TagList from '../components/Discover/TagList';
 import SelectedTags from '../components/Discover/SelectedTags';
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import style from "react-syntax-highlighter/dist/esm/styles/hljs/lightfair";
+
 
 interface DiscoverProps {
   // Define any props you need here
@@ -119,8 +121,8 @@ const Discover: React.FC<DiscoverProps> = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-2">
           {filteredSnippets.length > 0 ? (
             filteredSnippets.map((snippet) => (
-              <div key={snippet.id} className="border rounded-lg p-4 bg-gray-100 text-sm">
-                <SyntaxHighlighter language={pickLanguageForm(snippet)}>
+              <div key={snippet.id} className="border rounded-lg p-4 bg-white text-sm">
+                <SyntaxHighlighter language={pickLanguageForm(snippet)} wrapLines={true} style={style}>
                   {snippet.text_content}
                 </SyntaxHighlighter>
               </div>

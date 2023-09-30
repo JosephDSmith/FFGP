@@ -13,7 +13,7 @@ const ContributeBlurb: React.FC<ContributeBlurbProps> = () => {
   return (
     <div className="flex flex-col md:flex-row bg-gray-100">
       {/* Left side (text) */}
-      <div className="my-32 md:w-1/2 p-12 pt-12 sm:pl-16 md:pl-32 lg:pl-48">
+      <div className="my-24 mt-10 md:w-1/2 p-12 pt-12 sm:pl-16 md:pl-24 lg:pl-48">
         <h2 className="text-3xl text-slate-500">Ready to make a difference in the coding world?</h2>
         <p className="text-base text-gray-600 mb-6 pt-6">
           Join our vibrant community and contribute your code snippets. Whether you're a seasoned pro or just starting, your knowledge is valuable. Share your code to inspire, educate, and elevate the learning experience for everyone.

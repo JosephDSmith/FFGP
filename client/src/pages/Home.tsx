@@ -25,10 +25,12 @@ const Home: React.FC<HomeProps> = (props) => {
   return (
 
     <div className="home">
-      <CounterHeader count={snippets.length} />
-      {user && <UserDetails />}
+      
+
       <ContributeBlurb />
       <TagsDiscovery />
+      <CounterHeader count={snippets.length} />
+      {user && <UserDetails />}
     </div>
   );
 };

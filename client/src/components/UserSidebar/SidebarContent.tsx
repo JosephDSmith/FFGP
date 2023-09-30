@@ -65,7 +65,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ user, isOpen, onClose, 
             className="w-16 h-16 rounded-full mb-2"
           />
           <div className="text-lg font-semibold">{user?.email || 'User Email'}</div>
-          <div className="flex justify-between">
+          <div className="flex justify-between space-x-2 w-full mt-2">
             <div className="text-sm text-gray-500 bg-gray-200 p-1 flex-1 text-left rounded-xl">contributions:</div>
             <div className="text-sm text-gray-500 bg-gray-200 p-1 flex-1 text-right rounded-xl">10010</div>
           </div>
@@ -73,14 +73,14 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ user, isOpen, onClose, 
 
         {/* Action buttons */}
         <div className="flex mt-2 flex-col">
-          <button className="py-2 px-4 my-1 text-white bg-gray-500 rounded-xl" onClick={handleViewContributions}>
+          <button className="py-2 px-4 my-1 text-slate-800 bg-green-200 hover:bg-green-300 rounded-full" onClick={handleViewContributions}>
             View Contributions
           </button>
-          <button className="py-2 px-4 my-1 text-white bg-gray-500 rounded-xl" onClick={handleSettingsClick}>
+          <button className="py-2 px-4 my-1 text-slate-800  bg-green-200 hover:bg-green-300 rounded-full" onClick={handleSettingsClick}>
             Settings
           </button>
           {showDeleteButton && (
-            <button className="py-2 px-4 my-1 text-white bg-red-500 rounded-xl">
+            <button className="py-2 px-4 my-1 text-white bg-red-500 rounded-full">
               DELETE ACCOUNT
             </button>
           )}
@@ -88,7 +88,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ user, isOpen, onClose, 
 
         {/* Logout button (inside the sidebar) */}
         <div className="absolute bottom-20 left-0 right-0 text-center">
-          <button className="py-2 px-4 my-1 text-white bg-red-500 rounded-xl" style={{ bottom: '10%' }} onClick={handleLogoutClick}>
+          <button className="py-2 px-4 my-1 text-white bg-blue-400 hover:bg-blue-500 rounded-full" style={{ bottom: '10%' }} onClick={handleLogoutClick}>
             Logout
           </button>
         </div>

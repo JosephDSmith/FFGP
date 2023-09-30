@@ -28,7 +28,7 @@ const Languages: React.FC<LanguagesProps> = () => {
           <div className="mt-8 flex justify-center">
             <button
               onClick={() => nav('/discover')}
-              className="text-lg rounded-full px-6 py-3 bg-green-200 hover:bg-green-300 hover:text-white text-slate-500 transition-colors duration-300"
+              className="text-lg rounded-full px-6 py-3 bg-green-200 hover:bg-green-300 text-slate-800 transition-colors duration-300"
             >
               Discover Now
             </button>
