@@ -20,7 +20,6 @@ export default function App() {
       <Router>
         <Header />
         {user && <UserSidebar user={user} logout={logout}/>}
-        {!user && <div className="mt-20"></div>}
         <div className="">
           <Routes>
             <Route path="/" element={<Authorization />} />

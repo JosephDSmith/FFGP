@@ -62,7 +62,7 @@ const UserDetails: React.FC<UserDetailsProps> = () => {
 
   return (
     <motion.div
-      className="user-details p-24 text-center m-w-m"
+      className="user-details p-24 pt-0 text-center m-w-m"
       initial="hidden"
       animate="visible"
       variants={variants}
