@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TagList from '../components/Discover/TagList';
 import SelectedTags from '../components/Discover/SelectedTags';
-import { TagType } from '../functionality/types';
+import { SnippetType, TagType } from '../functionality/types';
 import { useNavigate } from 'react-router-dom';
 
 interface ContributeProps { }
@@ -11,13 +11,15 @@ const Contribute: React.FC<ContributeProps> = () => {
   const [tags, setTags] = useState<TagType[]>([]);
   const [selectedTags, setSelectedTags] = useState<number[]>([]);
   const [newTag, setNewTag] = useState<string>("");
-  const [isAddingTag, setIsAddingTag] = useState<boolean>(false); // State to control visibility
+  const [isAddingTag, setIsAddingTag] = useState<boolean>(false);
+  const [contribution, setContribution] = useState<SnippetType | null>(null);
+
   const nav = useNavigate();
 
   useEffect(() => {
     const fetchTags = async () => {
       try {
-        const response = await fetch("/api/tags"); // Replace with your API endpoint
+        const response = await fetch("/api/tags"); 
         const data = await response.json();
         setTags(data);
       } catch (error) {
@@ -75,9 +77,14 @@ const Contribute: React.FC<ContributeProps> = () => {
       })
     })
       .then(r => r.json())
-      .then(d => console.log(d))
-      .then(() => alert('Success!'))
-
+      .then((d: SnippetType) => {
+        setContribution(d);
+      })
+      .catch(error => {
+        console.error('Error submitting snippet:', error);
+        alert('An error occurred while submitting the snippet.');
+      });
+  
     setTextContent("");
     setSelectedTags([]);
   };
@@ -85,7 +92,28 @@ const Contribute: React.FC<ContributeProps> = () => {
   const selectedTagObjects = selectedTags
     .map((tagId) => tags.find((tag) => tag.id === tagId))
     .filter((tag) => tag !== undefined) as TagType[];
-
+if (contribution) {
+  return (
+    <div className="min-h-screen bg-green-50 flex items-center justify-center text-slate-500">
+      <div className="text-center">
+        <div className="text-2xl font-bold mb-4">Thank you for your contribution!</div>
+        <div className="mb-4">
+          <b>Text Content:</b> {contribution.text_content}
+        </div>
+        {contribution.tags && contribution.tags.length > 0 && (
+          <div className="mb-2">
+            <b>Tags:</b> {contribution.tags.map((tag, index) => (
+              <span key={tag.id}>
+                {index > 0 && ', '}
+                {tag.name}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
   return (
     <div>
       <div className='languages'>
@@ -166,5 +194,6 @@ const Contribute: React.FC<ContributeProps> = () => {
     </div>
   );
 };
+
 
 export default Contribute;
