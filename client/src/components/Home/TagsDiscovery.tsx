@@ -41,7 +41,8 @@ const TagsDiscovery: React.FC<TagsDiscoveryProps> = () => {
   return (
     <div className="text-center bg-white p-20 w-full text-slate-500">
       <p className="text-base">
-        <b>Dive into the world of coding and explore new programming languages. </b> <br/> <br/>Our platform is a hub for not only finding
+      <h2 className="text-3xl text-slate-500 pb-8">Dive into the world of coding and explore new programming languages.</h2>
+        Our platform is a hub for not only finding
         solutions but also for broadening your coding horizons.  <br/>Discover exciting languages, techniques, and approaches
         you might not have encountered otherwise. <br />
         <br />
