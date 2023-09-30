@@ -13,9 +13,10 @@ const CounterHeader: React.FC<CounterHeaderProps> = ({ count }) => {
         Just like you, passionate individuals from all around the world have contributed to our growing library of code snippets. <br />
         Thanks to your dedication, we've amassed a collection of
       </p>
-      <p className="text-xl font-bold">
-        <CountUp end={count} duration={2} separator="," /> snippets and counting!
-      </p>
+      
+      <h2 className="text-3xl text-slate-500"><CountUp end={count} duration={2} separator="," /> snippets and counting!</h2>
+        
+
     </div>
   );
 };
