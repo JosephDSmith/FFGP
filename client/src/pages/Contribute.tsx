@@ -3,6 +3,8 @@ import TagList from '../components/Discover/TagList';
 import SelectedTags from '../components/Discover/SelectedTags';
 import { SnippetType, TagType } from '../functionality/types';
 import { useNavigate } from 'react-router-dom';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 
 interface ContributeProps { }
 
@@ -66,6 +68,7 @@ const Contribute: React.FC<ContributeProps> = () => {
     setSelectedTags(selectedTags => selectedTags.filter(t => t !== deselectedTag));
   }
 
+  
   const handleSubmit = () => {
     console.log(textContent, selectedTags);
     fetch('/api/snippets', {
@@ -92,16 +95,30 @@ const Contribute: React.FC<ContributeProps> = () => {
     .map((tagId) => tags.find((tag) => tag.id === tagId))
     .filter((tag) => tag !== undefined) as TagType[];
 
+  const pickLanguageForm = (snippet: SnippetType): string => {
+    if (!snippet.tags || snippet.tags.length === 0) return 'markdown';
+    const tag = snippet.tags[0].name;
+    if (tag === 'python') return 'python';
+    if (tag === 'javascript') return 'javascript';
+    if (tag === 'c++') return 'cpp';
+    if (tag === 'java') return 'java';
+    return 'markdown';
+  };
+  
   if (contribution) {
     return (
       <div className="min-h-screen bg-green-50 flex items-center justify-center text-slate-500">
         <div className="text-center">
           <div className="text-2xl font-bold mb-4">Thank you for your contribution!</div>
-          <div className="mb-4">
-            <b>Text Content:</b> {contribution.text_content}
+          <div className="mb-42">
+            <div key={contribution.id} className="border rounded-lg p-4 bg-gray-100 text-sm">
+                <SyntaxHighlighter language={pickLanguageForm(contribution)}>
+                  {contribution.text_content}
+                </SyntaxHighlighter>
+              </div>
           </div>
           {contribution.tags && contribution.tags.length > 0 && (
-            <div className="mb-2">
+            <div className="my-2">
               <b>Tags:</b> {contribution.tags.map((tag, index) => (
                 <span key={tag.id}>
                   {index > 0 && ', '}
