@@ -135,7 +135,7 @@ const Contribute: React.FC<ContributeProps> = () => {
   return (
     <div>
       <div className='languages'>
-        <div className="py-16">
+        <div className="pt-16">
           <div className="mx-auto text-center max-w-2xl">
             <p className="pt-4 text-base text-slate-500 md: ml-5 mr-5">
               We invite you to become a valued contributor to our growing community. Share

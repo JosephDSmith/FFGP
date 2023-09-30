@@ -129,10 +129,10 @@ const Discover: React.FC<DiscoverProps> = () => {
             ))
           ) : (
             <div>
-            <p>No results found.</p>
+            <p>No results found.</p><br/>
             {filteredSnippets.length === 0 && (
               <button
-                className="bg-white hover:bg-green-200 text-slate-500 py-2 px-4 my-1 rounded"
+                className="bg-green-200 hover:bg-green-300 text-slate-800 py-2 px-4 my-1 rounded-full"
                 onClick={handleClearFilter}
               >
                 Clear Filter
