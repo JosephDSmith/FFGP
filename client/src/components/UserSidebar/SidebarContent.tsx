@@ -6,14 +6,13 @@ interface SidebarContentProps {
   user: UserType | null;
   isOpen: boolean;
   onClose: () => void;
-  onLogout: () => void; // Add a callback for logging out
+  onLogout: () => void; 
 }
 
 const SidebarContent: React.FC<SidebarContentProps> = ({ user, isOpen, onClose, onLogout }) => {
   const [showDeleteButton, setShowDeleteButton] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
-  const nav = useNavigate(); // Initialize useHistory
-
+  const nav = useNavigate(); 
 
   const handleSettingsClick = () => {
     setShowDeleteButton(!showDeleteButton);
@@ -72,11 +71,11 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ user, isOpen, onClose, 
         </div>
 
         {/* Action buttons */}
-        <div className="flex mt-2 flex-col">
-          <button className="py-2 px-4 my-1 text-slate-800 bg-green-200 hover:bg-green-300 rounded-full" onClick={handleViewContributions}>
+        <div className="flex mt-2 flex-col p-3">
+          <button className="py-2 px-4 my-1 text-slate-800 bg-gray-200 hover:bg-gray-300 rounded-full" onClick={handleViewContributions}>
             View Contributions
           </button>
-          <button className="py-2 px-4 my-1 text-slate-800  bg-green-200 hover:bg-green-300 rounded-full" onClick={handleSettingsClick}>
+          <button className="py-2 px-4 my-1 text-slate-800  bg-gray-200 hover:bg-gray-300 rounded-full" onClick={handleSettingsClick}>
             Settings
           </button>
           {showDeleteButton && (
@@ -88,7 +87,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ user, isOpen, onClose, 
 
         {/* Logout button (inside the sidebar) */}
         <div className="absolute bottom-20 left-0 right-0 text-center">
-          <button className="py-2 px-4 my-1 text-white bg-blue-400 hover:bg-blue-500 rounded-full" style={{ bottom: '10%' }} onClick={handleLogoutClick}>
+          <button className="py-2 px-16 my-1 text-white bg-blue-400 hover:bg-blue-500 rounded-full" style={{ bottom: '10%' }} onClick={handleLogoutClick}>
             Logout
           </button>
         </div>
