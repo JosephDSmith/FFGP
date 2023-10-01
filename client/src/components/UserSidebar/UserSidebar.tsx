@@ -8,7 +8,7 @@ interface UserSidebarProps {
   logout: () => void
 }
 
-const UserSidebar: React.FC<UserSidebarProps> = ({ user, logout }) => {
+const UserSidebar: React.FC<UserSidebarProps> = ({ user, logout}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   console.log(user)
@@ -31,7 +31,7 @@ const UserSidebar: React.FC<UserSidebarProps> = ({ user, logout }) => {
 
   return (
     <div className="relative">
-      <ToggleIcon user={user} onTogglePopup={togglePopup} />
+      <ToggleIcon user={user} onTogglePopup={togglePopup}/>
       <SidebarContent user={user} isOpen={isOpen} onClose={togglePopup} onLogout={handleLogout} />
     </div>
   );

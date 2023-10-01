@@ -36,9 +36,9 @@ const Navigation: React.FC<NavigationProps> = () => {
           <Link to="/discover">
             <img src="/assets/icons/discover.png" alt="Discover Icon" className="w-20 h-20"/>
           </Link>
-          <Link to="/contribute">
+          {user && <Link to="/contribute">
             <img src="/assets/icons/contribute.png" alt="Contribute Icon" className="w-20 h-20"/>
-          </Link>
+          </Link>}
         </div>
         <div className="hidden sm:flex space-x-20">
           <NavLink to="/home">home</NavLink>

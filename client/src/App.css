@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities; 
 
-/* body{
-    background-color: rgb(242, 242, 242);
-} */
+body{
+    background-color: rgba(249, 248, 248, 0.319);
+}
 
 .text-custom-red {
     color: #F66F6F;

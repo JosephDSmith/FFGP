@@ -10,7 +10,7 @@ interface AuthCardProps {
 const AuthCard: FC<AuthCardProps> = ({ onGoogleLogin }) => {
   return (
     <div className="flex justify-center items-center mt-5">
-      <div className="rounded-lg shadow-md p-10 w-full max-w-md text-center relative z-30 bg-green-50 ">
+      <div className="rounded-lg shadow-md p-10 w-full max-w-md text-center relative z-30 bg-white ">
         <WelcomeMessage />
         <Button onClick={onGoogleLogin}>
           <Image

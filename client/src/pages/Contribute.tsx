@@ -4,6 +4,7 @@ import SelectedTags from '../components/Discover/SelectedTags';
 import { SnippetType, TagType } from '../functionality/types';
 import { useNavigate } from 'react-router-dom';
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import style from "react-syntax-highlighter/dist/esm/styles/hljs/atom-one-light";
 
 
 interface ContributeProps { }
@@ -112,7 +113,7 @@ const Contribute: React.FC<ContributeProps> = () => {
           <div className="text-2xl font-bold mb-4">Thank you for your contribution!</div>
           <div className="mb-42">
             <div key={contribution.id} className="border rounded-lg p-4 bg-gray-100 text-sm">
-                <SyntaxHighlighter language={pickLanguageForm(contribution)}>
+                <SyntaxHighlighter language={pickLanguageForm(contribution)} wrapLines={true} style={style}>
                   {contribution.text_content}
                 </SyntaxHighlighter>
               </div>
@@ -134,7 +135,7 @@ const Contribute: React.FC<ContributeProps> = () => {
   return (
     <div>
       <div className='languages'>
-        <div className="bg-green-50 py-16">
+        <div className="pt-16">
           <div className="mx-auto text-center max-w-2xl">
             <p className="pt-4 text-base text-slate-500 md: ml-5 mr-5">
               We invite you to become a valued contributor to our growing community. Share
@@ -164,7 +165,7 @@ const Contribute: React.FC<ContributeProps> = () => {
             <div className="mt-8 flex justify-center mb-10">
               <button
                 onClick={handleSubmit}
-                className="text-lg rounded-full px-8 py-4 bg-green-200 hover:bg-red-200 text-slate-500 transition-colors duration-300"
+                className="text-lg rounded-full px-8 py-4 bg-green-200 hover:bg-green-300 text-slate-800 transition-colors duration-300"
               >
                 Submit Snippet
               </button>
@@ -172,7 +173,7 @@ const Contribute: React.FC<ContributeProps> = () => {
 
             {/* new tag section */}
             <div className="bg-green-50 py-10">
-              <h1>Can't find the tag you're looking for? </h1> 
+              <h1 className="pb-6">Can't find the tag you're looking for? </h1> 
               {isAddingTag ? (
                 <div className="mx-48 md: ml-20 mr-20">
                   <input
@@ -184,7 +185,7 @@ const Contribute: React.FC<ContributeProps> = () => {
                   />
                   <button
                     onClick={handleTagSubmit}
-                    className="rounded-lg bg-green-200 p-2 hover:bg-red-200 text-slate-500"
+                    className="rounded-lg bg-green-200 p-2 hover:bg-green-300 text-slate-800"
                   >
                     Add Tag
                   </button>

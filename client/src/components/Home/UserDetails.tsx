@@ -62,7 +62,7 @@ const UserDetails: React.FC<UserDetailsProps> = () => {
 
   return (
     <motion.div
-      className="user-details p-24 text-center m-w-m"
+      className="user-details p-24 pb-32 text-center m-w-m bg-gray-100 pt-12"
       initial="hidden"
       animate="visible"
       variants={variants}
@@ -85,10 +85,10 @@ const UserDetails: React.FC<UserDetailsProps> = () => {
         variants={variants}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <div className="text-sm text-slate-500 bg-gray-200 p-1 flex-1 text-left rounded-xl">
+        <div className="text-sm text-slate-700 bg-white p-1 flex-1 text-left rounded-xl">
           Contributions:
         </div>
-        <div className="text-sm text-slate-500 bg-gray-200 p-1 flex-1 text-right rounded-xl max-w-sm">
+        <div className="text-sm text-slate-700 bg-white p-1 flex-1 text-right rounded-xl max-w-sm">
           {user?.snippet_count}
         </div>
       </motion.div>
@@ -111,7 +111,7 @@ const UserDetails: React.FC<UserDetailsProps> = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
           >
             <Link to={`/discover/${id}`}>
-              <div className="text-sm text-gray-500 bg-gray-200 p-1 flex justify-between rounded-xl">
+              <div className="text-sm text-slate-700 bg-white hover:text-blue-500 p-1 flex justify-between rounded-xl">
                 <div className="mr-2">{language}</div>
                 <div className="ml-5">{count}</div>
               </div>
